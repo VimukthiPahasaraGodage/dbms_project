@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/dbms_project.iml" filepath="$PROJECT_DIR$/.idea/dbms_project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Supply-Chain.iml" filepath="$PROJECT_DIR$/.idea/Supply-Chain.iml" />
     </modules>
   </component>
 </project>
