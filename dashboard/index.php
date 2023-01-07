@@ -17,7 +17,7 @@
                         <p>Add new customers and update the information of existing customers</p>
                     </div>
                     <div class="card-action center">
-                        <a href="manage_customers/manage_customers.php">Checkout</a>
+                        <a href="manage_customers">Checkout</a>
                     </div>
                 </div>
             </div>
@@ -71,5 +71,4 @@
     </div>
 
     <?php include ('templates/footer.php') ?>
-</body>
 </html>
