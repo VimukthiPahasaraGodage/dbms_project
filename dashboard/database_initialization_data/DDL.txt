@@ -9,7 +9,7 @@ CREATE TABLE customer (
   phone_number CHAR(10) NOT NULL,
   address VARCHAR(100) NOT NULL,
   discount NUMERIC(4, 2) DEFAULT 0,
-  type VARCHAR(14) NOT NULL,
+  type VARCHAR(12) NOT NULL,
   PRIMARY KEY (customer_id),
   UNIQUE (email, password),
   CHECK (type IN ('WHOLESALER', 'RETAILER', 'END_CUSTOMER'))
@@ -19,7 +19,11 @@ CREATE TABLE customer (
 CREATE TABLE product (
   product_id INT AUTO_INCREMENT,
   product_name VARCHAR(50) NOT NULL,
-  product_description VARCHAR(300) NOT NULL,
+  quantity INT DEFAULT 0,
+  ram INT NOT NULL,
+  storage INT NOT NULL,
+  display INT NOT NULL,
+  battery INT NOT NULL,
   image VARCHAR(100) NOT NULL,
   price NUMERIC(10, 2) NOT NULL,
   discount NUMERIC(4, 2) DEFAULT 0,
@@ -27,15 +31,22 @@ CREATE TABLE product (
   PRIMARY KEY (product_id),
   CHECK (price > 0),
   CHECK (train_capacity_consumption > 0),
-  CHECK (discount >= 0 AND discount < 100)
+  CHECK (discount >= 0 AND discount < 100),
+  CHECK (ram > 0),
+  CHECK (storage > 0),
+  CHECK (display > 0),
+  CHECK (battery > 0),
+  CHECK (quantity => 0)
 );
 
 CREATE TABLE store (
-  city VARCHAR(12),
+  store_id INT AUTO_INCREMENT,
+  city_name VARCHAR(12) NOT NULL,
   station VARCHAR(12) NOT NULL,
-  capacity BIGINT NOT NULL,
-  PRIMARY KEY (city),
+  capacity INT NOT NULL,
+  PRIMARY KEY (store_id),
   UNIQUE (station),
+  UNIQUE (city_name),
   CHECK (capacity > 0)
 );
 
@@ -43,23 +54,19 @@ CREATE TABLE route (
   route_id INT AUTO_INCREMENT,
   route_map VARCHAR(300) NOT NULL,
   duration INT NOT NULL,
-  status VARCHAR(6) NOT NULL,
-  store VARCHAR(12) NOT NULL,
+  store_id INT,
   PRIMARY KEY (route_id),
-  FOREIGN KEY (store) REFERENCES store(city) ON DELETE CASCADE,
-  CHECK (status IN ('USED', 'UNUSED')),
+  FOREIGN KEY (store_id) REFERENCES store(store_id) ON DELETE CASCADE,
   CHECK (duration > 0)
 );
 
 CREATE TABLE truck (
   registration_no VARCHAR(8),
   capacity INT NOT NULL,
-  status VARCHAR(12) NOT NULL,
-  store VARCHAR(12),
+  store_id INT,
   PRIMARY KEY (registration_no),
-  FOREIGN KEY (store) REFERENCES store(city) ON DELETE SET NULL,
-  CHECK (capacity > 0),
-  CHECK (status IN ('AVAILABLE', 'UNAVAILABLE'))
+  FOREIGN KEY (store_id) REFERENCES store(store_id) ON DELETE SET NULL,
+  CHECK (capacity > 0)
 );
 
 CREATE TABLE driver (
@@ -68,9 +75,9 @@ CREATE TABLE driver (
   name VARCHAR(50) NOT NULL,
   address VARCHAR(100) NOT NULL,
   phone_number CHAR(10) NOT NULL,
-  store VARCHAR(12),
+  store_id INT,
   PRIMARY KEY (NIC),
-  FOREIGN KEY (store) REFERENCES store(city) ON DELETE SET NULL,
+  FOREIGN KEY (store_id) REFERENCES store(store_id) ON DELETE SET NULL,
   UNIQUE (license_number)
 );
 
@@ -79,80 +86,59 @@ CREATE TABLE driver_assistant (
   name VARCHAR(50) NOT NULL,
   address VARCHAR(100) NOT NULL,
   phone_number CHAR(10) NOT NULL,
-  store VARCHAR(12),
+  store_id INT,
   PRIMARY KEY (NIC),
-  FOREIGN KEY (store) REFERENCES store(city) ON DELETE SET NULL
+  FOREIGN KEY (store_id) REFERENCES store(store_id) ON DELETE SET NULL
 );
 
 CREATE TABLE order_ (
   order_id INT AUTO_INCREMENT,
   order_date DATE NOT NULL,
+  order_customer_id INT NOT NULL,
+  total_amount NUMERIC(20, 2) NOT NULL,
   expected_delivery_date DATE NOT NULL,
   delivery_address VARCHAR(100) NOT NULL,
   payment_method VARCHAR(16) NOT NULL,
-  status VARCHAR(22) NOT NULL,
-  route INT NOT NULL,
-  customer INT NOT NULL,
+  payment_status VARCHAR(7) NOT NULL,
+  order_status VARCHAR(22) NOT NULL,
+  route_id INT,
+  delivery_id INT,
   PRIMARY KEY (order_id),
-  FOREIGN KEY (route) REFERENCES route(route_id) ON DELETE CASCADE,
-  FOREIGN KEY (customer) REFERENCES customer(customer_id) ON DELETE CASCADE,
+  FOREIGN KEY (route_id) REFERENCES route(route_id) ON DELETE SET NULL,
+  FOREIGN KEY (delivery_id) REFERENCES delivery_schedule(delivery_id) ON DELETE SET NULL,
+  FOREIGN KEY (order_customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE,
   CHECK (payment_method IN ('CARD', 'CASH_ON_DELIVERY')),
-  CHECK (status IN ('CONFIRMED', 'TRANSPORTING_TO_STORE', 'IN_STORE', 'DELIVERING', 'DELIVERED', 'CANCELED', 'RETURNING', 'RETURNED')),
-  CHECK (DATEDIFF(expected_delivery_date, order_date) + 1 >= 7)
-);
-
-CREATE TABLE stores (
-  order_id INT,
-  store VARCHAR(12),
-  type VARCHAR(8),
-  PRIMARY KEY (order_id, store),
-  FOREIGN KEY (order_id) REFERENCES order_(order_id) ON DELETE CASCADE,
-  FOREIGN KEY (store) REFERENCES store(city) ON DELETE CASCADE,
-  CHECK (type IN ('ORDER', 'RELOCATE', 'RETURN'))
+  CHECK (payment_status IN ('PAID', 'PENDING')),
+  CHECK (order_status IN ('CONFIRMED', 'TRANSPORTING_TO_STORE', 'IN_STORE', 'DELIVERING', 'DELIVERED')),
+  CHECK (DATEDIFF(expected_delivery_date, order_date) + 1 >= 7),
+  CHECK (total_amount > 0)
 );
 
 CREATE TABLE delivery_schedule (
   delivery_id INT AUTO_INCREMENT,
   date DATE NOT NULL,
   start_time TIME NOT NULL,
-  driver VARCHAR(12),
-  driver_assistant VARCHAR(12),
-  truck VARCHAR(8),
+  NIC_driver VARCHAR(12),
+  NIC_driver_assistant VARCHAR(12),
+  truck_registration_no VARCHAR(8),
   PRIMARY KEY (delivery_id),
-  FOREIGN KEY (truck) REFERENCES truck(registration_no) ON DELETE SET NULL,
-  FOREIGN KEY (driver) REFERENCES driver(NIC) ON DELETE SET NULL,
-  FOREIGN KEY (driver_assistant) REFERENCES driver_assistant(NIC) ON DELETE SET NULL
-);
-
-CREATE TABLE delivers (
-  order_id INT,
-  delivery_id INT,
-  PRIMARY KEY (order_id, delivery_id),
-  FOREIGN KEY (order_id) REFERENCES order_(order_id) ON DELETE CASCADE,
-  FOREIGN KEY (delivery_id) REFERENCES delivery_schedule(delivery_id) ON DELETE CASCADE
-);
-
-CREATE TABLE store_includes (
-  store VARCHAR(12),
-  product_id INT,
-  quantity INT NOT NULL,
-  PRIMARY KEY (store, product_id),
-  FOREIGN KEY (store) REFERENCES store(city) ON DELETE CASCADE,
-  FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE,
-  CHECK (quantity > 0)
+  FOREIGN KEY (truck_registration_no) REFERENCES truck(registration_no) ON DELETE SET NULL,
+  FOREIGN KEY (NIC_driver) REFERENCES driver(NIC) ON DELETE SET NULL,
+  FOREIGN KEY (NIC_driver_assistant) REFERENCES driver_assistant(NIC) ON DELETE SET NULL
 );
 
 CREATE TABLE train_schedule (
   trip_id INT AUTO_INCREMENT,
   day VARCHAR(10) NOT NULL,
   departure_time TIME NOT NULL,
-  status VARCHAR(12) NOT NULL,
+  destination_time TIME NOT NULL,
   allocated_capacity INT NOT NULL,
-  departure_station VARCHAR(12) NOT NULL,
+  departure_station INT NOT NULL,
+  destination_station INT NOT NULL,
   PRIMARY KEY (trip_id),
-  FOREIGN KEY (departure_station) REFERENCES store(city) ON DELETE CASCADE,
+  FOREIGN KEY (departure_station) REFERENCES store(store_id) ON DELETE CASCADE,
+  FOREIGN KEY (destination_station) REFERENCES store(store_id) ON DELETE CASCADE,
   CHECK (day IN ('MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY')),
-  CHECK (status IN ('AVAILABLE', 'UNAVAILABLE')),
   CHECK (allocated_capacity > 0)
 );
 
@@ -165,15 +151,6 @@ CREATE TABLE transports (
   FOREIGN KEY (trip_id) REFERENCES train_schedule(trip_id) ON DELETE CASCADE
 );
 
-CREATE TABLE destination (
-  trip_id INT,
-  destination_station VARCHAR(12),
-  destination_time TIME NOT NULL,
-  PRIMARY KEY (trip_id, destination_station),
-  FOREIGN KEY (trip_id) REFERENCES train_schedule(trip_id) ON DELETE CASCADE,
-  FOREIGN KEY (destination_station) REFERENCES store(city) ON DELETE CASCADE
-);
-
 CREATE TABLE order_includes (
   order_id INT,
   product_id INT,
@@ -182,4 +159,24 @@ CREATE TABLE order_includes (
   FOREIGN KEY (order_id) REFERENCES order_(order_id) ON DELETE CASCADE,
   FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE,
   CHECK (quantity > 0)
+);
+
+CREATE TABLE driver_roster (
+  entry_no INT AUTO_INCREMENT,
+  date DATE NOT NULL,
+  shift_start_time TIME NOT NULL,
+  shift_end_time TIME NOT NULL,
+  NIC_driver VARCHAR(12) NOT NULL,
+  PRIMARY KEY (entry_no),
+  FOREIGN KEY (NIC_driver) REFERENCES driver(NIC) ON DELETE CASCADE
+);
+
+CREATE TABLE driver_assistant_roster (
+  entry_no INT AUTO_INCREMENT,
+  date DATE NOT NULL,
+  shift_start_time TIME NOT NULL,
+  shift_end_time TIME NOT NULL,
+  NIC_driver_assistant VARCHAR(12) NOT NULL,
+  PRIMARY KEY (entry_no),
+  FOREIGN KEY (NIC_driver_assistant) REFERENCES driver_assistant(NIC) ON DELETE CASCADE
 );
