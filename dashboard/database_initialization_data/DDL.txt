@@ -12,7 +12,7 @@ CREATE TABLE customer (
   type VARCHAR(12) NOT NULL,
   PRIMARY KEY (customer_id),
   UNIQUE (email, password),
-  CHECK (type IN ('WHOLESALER', 'RETAILER', 'END_CUSTOMER'))
+  CHECK (type IN ('WHOLESALER', 'RETAILER', 'END_CUSTOMER')),
   CHECK (discount >= 0 AND discount < 100)
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE product (
   CHECK (storage > 0),
   CHECK (display > 0),
   CHECK (battery > 0),
-  CHECK (quantity => 0)
+  CHECK (quantity >= 0)
 );
 
 CREATE TABLE store (
@@ -91,29 +91,6 @@ CREATE TABLE driver_assistant (
   FOREIGN KEY (store_id) REFERENCES store(store_id) ON DELETE SET NULL
 );
 
-CREATE TABLE order_ (
-  order_id INT AUTO_INCREMENT,
-  order_date DATE NOT NULL,
-  order_customer_id INT NOT NULL,
-  total_amount NUMERIC(20, 2) NOT NULL,
-  expected_delivery_date DATE NOT NULL,
-  delivery_address VARCHAR(100) NOT NULL,
-  payment_method VARCHAR(16) NOT NULL,
-  payment_status VARCHAR(7) NOT NULL,
-  order_status VARCHAR(22) NOT NULL,
-  route_id INT,
-  delivery_id INT,
-  PRIMARY KEY (order_id),
-  FOREIGN KEY (route_id) REFERENCES route(route_id) ON DELETE SET NULL,
-  FOREIGN KEY (delivery_id) REFERENCES delivery_schedule(delivery_id) ON DELETE SET NULL,
-  FOREIGN KEY (order_customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE,
-  CHECK (payment_method IN ('CARD', 'CASH_ON_DELIVERY')),
-  CHECK (payment_status IN ('PAID', 'PENDING')),
-  CHECK (order_status IN ('CONFIRMED', 'TRANSPORTING_TO_STORE', 'IN_STORE', 'DELIVERING', 'DELIVERED')),
-  CHECK (DATEDIFF(expected_delivery_date, order_date) + 1 >= 7),
-  CHECK (total_amount > 0)
-);
-
 CREATE TABLE delivery_schedule (
   delivery_id INT AUTO_INCREMENT,
   date DATE NOT NULL,
@@ -142,24 +119,6 @@ CREATE TABLE train_schedule (
   CHECK (allocated_capacity > 0)
 );
 
-CREATE TABLE transports (
-  order_id INT,
-  trip_id INT,
-  date DATE,
-  PRIMARY KEY (order_id, trip_id, date),
-  FOREIGN KEY (order_id) REFERENCES order_(order_id) ON DELETE CASCADE,
-  FOREIGN KEY (trip_id) REFERENCES train_schedule(trip_id) ON DELETE CASCADE
-);
-
-CREATE TABLE order_includes (
-  order_id INT,
-  product_id INT,
-  quantity INT NOT NULL,
-  PRIMARY KEY (order_id, product_id),
-  FOREIGN KEY (order_id) REFERENCES order_(order_id) ON DELETE CASCADE,
-  FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE,
-  CHECK (quantity > 0)
-);
 
 CREATE TABLE driver_roster (
   entry_no INT AUTO_INCREMENT,
@@ -179,4 +138,46 @@ CREATE TABLE driver_assistant_roster (
   NIC_driver_assistant VARCHAR(12) NOT NULL,
   PRIMARY KEY (entry_no),
   FOREIGN KEY (NIC_driver_assistant) REFERENCES driver_assistant(NIC) ON DELETE CASCADE
+);
+
+CREATE TABLE order_ (
+  order_id INT AUTO_INCREMENT,
+  order_date DATE NOT NULL,
+  order_customer_id INT NOT NULL,
+  total_amount NUMERIC(20, 2) NOT NULL,
+  expected_delivery_date DATE NOT NULL,
+  delivery_address VARCHAR(100) NOT NULL,
+  payment_method VARCHAR(16) NOT NULL,
+  payment_status VARCHAR(7) NOT NULL,
+  order_status VARCHAR(22) NOT NULL,
+  route_id INT,
+  delivery_id INT,
+  PRIMARY KEY (order_id),
+  FOREIGN KEY (route_id) REFERENCES route(route_id) ON DELETE SET NULL,
+  FOREIGN KEY (delivery_id) REFERENCES delivery_schedule(delivery_id) ON DELETE SET NULL,
+  FOREIGN KEY (order_customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE,
+  CHECK (payment_method IN ('CARD', 'CASH_ON_DELIVERY')),
+  CHECK (payment_status IN ('PAID', 'PENDING')),
+  CHECK (order_status IN ('CONFIRMED', 'TRANSPORTING_TO_STORE', 'IN_STORE', 'DELIVERING', 'DELIVERED')),
+  CHECK (DATEDIFF(expected_delivery_date, order_date) + 1 >= 7),
+  CHECK (total_amount > 0)
+);
+
+CREATE TABLE transports (
+  order_id INT,
+  trip_id INT,
+  date DATE,
+  PRIMARY KEY (order_id, trip_id, date),
+  FOREIGN KEY (order_id) REFERENCES order_(order_id) ON DELETE CASCADE,
+  FOREIGN KEY (trip_id) REFERENCES train_schedule(trip_id) ON DELETE CASCADE
+);
+
+CREATE TABLE order_includes (
+  order_id INT,
+  product_id INT,
+  quantity INT NOT NULL,
+  PRIMARY KEY (order_id, product_id),
+  FOREIGN KEY (order_id) REFERENCES order_(order_id) ON DELETE CASCADE,
+  FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE,
+  CHECK (quantity > 0)
 );
