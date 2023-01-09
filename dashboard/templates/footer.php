@@ -1,6 +1,6 @@
     <footer class="page-footer grey darken-3">
         <div class="footer-copyright">
-            <div class="container center-align">&copy; 2023 DBMS project group 40 - Batch 20 - Semester 3</div>
+            <div class="container center-align">&copy; 2023 DBMS project group 39 - Batch 20 - Semester 3</div>
         </div>
     </footer>
 

@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s12 l4 offset-l2">
+            <div class="col s12 l4">
                 <div class="card small">
                     <div class="card-content">
                         <span class="card-title">Add a Store</span>
@@ -64,6 +64,17 @@
                     </div>
                     <div class="card-action center">
                         <a href="#">Checkout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 l4">
+                <div class="card small">
+                    <div class="card-content">
+                        <span class="card-title">Reports</span>
+                        <p>Generate quarterly sales reports, product analytics, city and route analytics, customer analytics, employee analytics</p>
+                    </div>
+                    <div class="card-action center">
+                        <a href="reports">Checkout</a>
                     </div>
                 </div>
             </div>
