@@ -37,19 +37,19 @@ INSERT INTO train_schedule (day, departure_time, destination_time, allocated_cap
 INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('SATURDAY', '16:56:00', '07:49:00', '4800', '7', '6');
 
 INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198308770070', 'suthan', 'No 10, mountain road, Wellawatte.', '0770147852', 1);
-INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198308770770', 'de Silva','No 10 mountain road, Wellawatte', '0770147852' ,2 );
-INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198007773170', 'puthan','No 11, forest road,moratumulla', '0770747852' ,3 );
-INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197308003240', 'yuthan','No 70, lovers road,Moratuwa', '0771147852' ,4 );
-INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197308732271', 'yusan','No 24, park road,kandy', '0711147857' ,5 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198308770770', 'de Silva','No 10 temple road, Negombo' , '0770147852' ,2 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198007773170', 'puthan','No 11, forest road, galle','0770747852' ,3 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197308003240', 'yuthan','No 70, fortroad, matara','0771147852' ,4 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197308732271', 'theva' ,'No 24, kandy road, jaffna', '0711147857' ,5 );
 INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197028773240', 'sudanan','No 47, beach road, trincomalee', '0771144252' ,6 );
-INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('196308280070', 'rathnayake', 'No 10, silaw road, puttalam', '0760144852', 7);
 INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198608571070', 'athukorala', '14A Boyd Pl, Colombo 00300.', '0762282424', 1);
-INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198308125770', 'de Silva','26 A Alwis Pl, Colombo 00300', '0782437594' ,2 );
-INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198003473170', 'sarujan','151 Galle Rd, Colombo 00300', '0777393418' ,3 );
-INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197317003240', 'akilavan','11A 19th Ln, Colombo 00300', '0712776354' ,4 );
-INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197308933271', 'hari','21 17th Ln, Colombo 00300', '0776991818' ,5 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198308125770', 'de Silva','26 A Alwis Pl, negombo', '0782437594' ,2 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198003473170', 'sarujan','151 Galle Rd, galle', '0777393418' ,3 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197317003240', 'akilavan','11A 19th Ln, matara', '0712776354' ,4 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197308933271', 'hari','21 17th Ln, jaffna', '0776991818' ,5 );
 INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197128783740', 'parshith','No 47, beach road, trincomalee', '0761144252' ,6 );
-INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('196108240170', 'sathsarani', 'No 10, silaw road, puttalam', '0780144852', 7);
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('196108240170', 'sathsarani', 'No 10, raja veediya road, kandy', '0780144852', 7);
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('196308280070', 'rathnayake', 'No 10, sri dalada veediya road, kandy ', '0760144852', 7);
 
 INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('1', '2023-01-01', '06:00:00', '08:45:00', '196108240170');
 INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('2', '2023-01-02', '07:00:00', '08:00:00', '196308280070');
@@ -60,6 +60,7 @@ INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `
 INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('7', '2023-01-07', '13:10:39', '14:15:40', '198308125770');
 INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('8', '2023-01-07', '09:20:22', '11:30:00', '198003473170');
 INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('9', '2023-01-09', '11:45:38', '17:12:38', '198003473170');
+
 
 INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199956789788', 'B3547808', 'Sivapalan', 'N0,10 Palaly road, Jaffna', '0777467589', '5');
 INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198856789788', 'B5557608', 'Sampath', 'N0,10 Chunnakam road, Jaffna', '0773464589', '5');
@@ -76,6 +77,16 @@ INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`
 INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199745289562', 'B3453253','Pasindu','No,20 Park road, Galle', '0772345461','3');
 INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197656748267', 'B2419321','Premkumar','N0,23 Anniewatta road, Kandy', '0776892947','7');
 
+
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('1', '2023-01-01', '06:00:00', '08:45:00', '199656748921');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('2', '2023-01-02', '07:00:00', '08:00:00', '197656748267');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('3', '2023-01-03', '04:00:00', '06:15:00', '199745628390');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('4', '2023-01-04', '11:00:02', '11:08:00', '198294057686');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('5', '2023-01-05', '14:00:45', '17:08:45', '198635678490');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('6', '2023-01-06', '19:09:50', '21:00:50', '198756566534');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('7', '2023-01-07', '13:10:39', '14:15:40', '198678563566');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('8', '2023-01-07', '09:20:22', '11:30:00', '199745689362');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('9', '2023-01-09', '11:45:38', '17:12:38', '199745289562');
 
 
 
