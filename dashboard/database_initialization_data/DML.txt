@@ -61,20 +61,19 @@ INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `
 INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('8', '2023-01-07', '09:20:22', '11:30:00', '198003473170');
 INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('9', '2023-01-09', '11:45:38', '17:12:38', '198003473170');
 
-
-INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199956789788', 'B3547808', 'Sivapalan', 'N0,10 Palaly road, Jaffna', '0777467589', '5');
-INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198856789788', 'B5557608', 'Sampath', 'N0,10 Chunnakam road, Jaffna', '0773464589', '5');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198635678490', 'B2458169','Tharindu','No, 267, Ratmalana road, Colombo', '0778956777','1');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199025637849', 'B4356281','Aadhil','No, 320 Dehiwala road, Colombo', '0778696342','1');
 INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198756566534','B2435621', 'Mathan','No, 123 Seedhuwa, Negombo', '0776895639','2');
 INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198678563566','B4563781', 'Arivalakan','No,45 Katunaayake raod, Negombo', '0777584532','2');
-INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199745689362', 'B3456243','Thamotharan','No,12 Galle road, Galle', '0776895462','3');
-INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199024567358','B3457834',  'Vinoth','N0,12 Uda PeekWella road, Matara', '0775869953','4');
-INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199745628390','B3678291', 'Ranjith','No, 60 Bakery road, Trincomalee','0777684756','6');
-INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198845673892', 'B2487391','Karunarathna','N0, 68 Beach road, Matara', '0777657894','4');
-INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198635678490', 'B2458169','Tharindu','No, 267, Ratmalana road, Colombo', '0778956777','1');
-INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199656748921', 'B2489361','Hashitha','N0,23 Galgamuwa road, Kandy', '0776894567','7');
-INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198294057686', 'B3469271','Manohar','No, 26 Cathedral road, Trincomalee','0768957647','6');
-INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199025637849', 'B4356281','Aadhil','No, 320 Dehiwala road, Colombo', '0778696342','1');
 INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199745289562', 'B3453253','Pasindu','No,20 Park road, Galle', '0772345461','3');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199745689362', 'B3456243','Thamotharan','No,12 Galle road, Galle', '0776895462','3');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198845673892', 'B2487391','Karunarathna','N0, 68 Beach road, Matara', '0777657894','4');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199024567358','B3457834',  'Vinoth','N0,12 Uda PeekWella road, Matara', '0775869953','4');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199956789788', 'B3547808', 'Sivapalan', 'N0,10 Palaly road, Jaffna', '0777467589', '5');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198856789788', 'B5557608', 'Sampath', 'N0,10 Chunnakam road, Jaffna', '0773464589', '5');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199745628390','B3678291', 'Ranjith','No, 60 Bakery road, Trincomalee','0777684756','6');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198294057686', 'B3469271','Manohar','No, 26 Cathedral road, Trincomalee','0768957647','6');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199656748921', 'B2489361','Hashitha','N0,23 Galgamuwa road, Kandy', '0776894567','7');
 INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197656748267', 'B2419321','Premkumar','N0,23 Anniewatta road, Kandy', '0776892947','7');
 
 
