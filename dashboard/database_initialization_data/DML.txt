@@ -73,14 +73,9 @@ INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`
 INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199656748921', 'B2489361','Hashitha','N0,23 Galgamuwa road, Kandy', '0776894567','7');
 INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198294057686', 'B3469271','Manohar','No, 26 Cathedral road, Trincomalee','0768957647','6');
 INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199025637849', 'B4356281','Aadhil','No, 320 Dehiwala road, Colombo', '0778696342','1');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199745289562', 'B3453253','Pasindu','No,20 Park road, Galle', '0772345461','3');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197656748267', 'B2419321','Premkumar','N0,23 Anniewatta road, Kandy', '0776892947','7');
 
-INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('1', '2022-11-09', '11:40:34', '13:40:34', '198294057686');
-INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('2', '2022-11-17', '15:40:34', '16:30:14', '198856789788');
-INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('3', '2022-11-22', '10:40:34', '11:10:20', '199025637849');
-INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('4', '2022-11-25', '12:53:25', '12:40:19', '199745689362');
-INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('5', '2022-12-01', '13:55:13', '14:44:03', '199025637849');
-INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('6', '2022-12-03', '13:53:20', '14:30:19', '199745689362');
-INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('7', '2022-12-15', '08:38:34', '10:18:56', '199024567358');
-INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES  ('8', '2022-12-18', '09:22:31', '10:44:13', '199025637849');
-INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('9', '2022-12-20', '10:50:34', '12:10:20', '198856789788');
-INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES  ('10', '2022-12-24', '11:53:15', '13:10:19', '198856789788');
+
+
+
