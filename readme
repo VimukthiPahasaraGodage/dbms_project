@@ -1,1 +1,3 @@
-<h1>Supply-Chain Management System<h1>
+01)Edit connection file according to your connection name
+      (connection->connection.php)
+02)Index.php file is located in User_mode->index.php
