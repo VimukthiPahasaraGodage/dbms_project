@@ -1,5 +1,5 @@
 !!!Root Folder Name "Supply-Chain"
-01)In database folder DDL and DML is located 
+01)In database folder DDL and DML are located 
 02)Edit connection file according to your connection name
       (connection->connection.php)
 03)Index.php file is located in User_mode->index.php
