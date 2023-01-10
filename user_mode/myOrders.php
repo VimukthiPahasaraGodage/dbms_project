@@ -140,26 +140,27 @@ if(isset($con)){
         <div style="margin: 0px;padding: 0px;" id="ToShip" >
             <h3 style="text-decoration: underline;text-align: center;">Seeing To Ship</h3>
             <?php
-            $query_stores_order="SELECT * FROM `order` WHERE order_customer_id={$_SESSION['customer_id']} AND (order_status='CONFIRMED' OR order_status='TRANSPORTING_TO_STORE');";
+            $query_stores_order="SELECT * FROM `order_` WHERE order_customer_id={$_SESSION['customer_id']} AND (order_status='CONFIRMED' OR order_status='TRANSPORTING_TO_STORE');";
             $query_stores_order=$con->query($query_stores_order);
             while($row=$query_stores_order->fetch_assoc()){
-                $sN="SELECT `city_name` FROM `store` WHERE store_id={$row['store_id']};";
+
+
+                $rN="SELECT `route_map`,`store_id` FROM `route` WHERE route_id={$row['route_id']};";
+                $rN = $con->query($rN);
+                $rN = $rN->fetch_assoc();
+                $sN="SELECT `city_name` FROM `store` WHERE store_id={$rN['store_id']};";
                 $sN = $con->query($sN);
                 $sN = $sN->fetch_assoc();
 
-
-                $rN="SELECT `route_map` FROM `route` WHERE route_id={$row['route_id']};";
-                $rN = $con->query($rN);
-                $rN = $rN->fetch_assoc();
                 echo ('
             <div style="background-color: #858989;border-radius: 10px;border: groove #ffffff 2px;max-width: 650px;" class="container" >
-            <h4 style="text-align: center;text-decoration: underline;">Order Id -'.$row['order_id'].' </h4>
+            <h4 style="text-align: center;text-decoration: underline;">Order Id -'.$row['order_id'].'('.$row['order_status'].') </h4>
             <h6>Address:'.$row['delivery_address'].'</h6>
             <h6>Nearby Store:'.$sN['city_name'].'</h6>
             <h6>Route:'.$rN['route_map'].'</h6>
             <h6>Amount:'.$row['total_amount'].'.00LKR ('.$row['payment_status'].')</h6>
             <h6>Ordered Date:'.$row['order_date'].'</h6>
-            <h6>Expected Delivery Date:'.$row['expected_Delivery_Date'].'</h6>
+            <h6>Expected Delivery Date:'.$row['expected_delivery_date'].'</h6>
             <h6>Product:</h6>
             ');
                 $qu_includes="SELECT `order_includes`.`order_id`, `order_includes`.`product_id`, `order_includes`.`quantity`,`product`.`product_name` 
@@ -181,26 +182,25 @@ ON `order_includes`.`product_id`=`product`.`product_id` WHERE `order_includes`.`
         <div hidden="hidden" style="margin: 0px;padding: 0px;" id="ToReceive" >
             <h3 style="text-decoration: underline;text-align: center;">Seeing To Receive</h3>
             <?php
-            $query_stores_order="SELECT * FROM `order` WHERE order_customer_id={$_SESSION['customer_id']} AND (order_status='IN_STORE' OR order_status='DELIVERING');";
+            $query_stores_order="SELECT * FROM `order_` WHERE order_customer_id={$_SESSION['customer_id']} AND (order_status='IN_STORE' OR order_status='DELIVERING');";
             $query_stores_order=$con->query($query_stores_order);
             while($row=$query_stores_order->fetch_assoc()){
-                $sN="SELECT `city_name` FROM `store` WHERE store_id={$row['store_id']};";
-                $sN = $con->query($sN);
-                $sN = $sN->fetch_assoc();
 
-
-                $rN="SELECT `route_map` FROM `route` WHERE route_id={$row['route_id']};";
+                $rN="SELECT `route_map`,`store_id` FROM `route` WHERE route_id={$row['route_id']};";
                 $rN = $con->query($rN);
                 $rN = $rN->fetch_assoc();
+                $sN="SELECT `city_name` FROM `store` WHERE store_id={$rN['store_id']};";
+                $sN = $con->query($sN);
+                $sN = $sN->fetch_assoc();
                 echo ('
             <div style="background-color: #858989;border-radius: 10px;border: groove #ffffff 2px;max-width: 650px;" class="container" >
-            <h4 style="text-align: center;text-decoration: underline;">Order Id -'.$row['order_id'].' </h4>
-            <h6>Address:'.$row['address'].'</h6>
+            <h4 style="text-align: center;text-decoration: underline;">Order Id -'.$row['order_id'].'('.$row['order_status'].') </h4>
+            <h6>Address:'.$row['delivery_address'].'</h6>
             <h6>Nearby Store:'.$sN['city_name'].'</h6>
             <h6>Route:'.$rN['route_map'].'</h6>
             <h6>Amount:'.$row['total_amount'].'.00LKR ('.$row['payment_status'].')</h6>
             <h6>Ordered Date:'.$row['order_date'].'</h6>
-            <h6>Expected Delivery Date:'.$row['expected_Delivery_Date'].'</h6>
+            <h6>Expected Delivery Date:'.$row['expected_delivery_date'].'</h6>
             <h6>Product:</h6>
             ');
                 $qu_includes="SELECT `order_includes`.`order_id`, `order_includes`.`product_id`, `order_includes`.`quantity`,`product`.`product_name` 
@@ -223,26 +223,25 @@ ON `order_includes`.`product_id`=`product`.`product_id` WHERE `order_includes`.`
         <div hidden="hidden" style="margin: 0px;padding: 0px;" id="ViewAll" >
             <h3 style="text-decoration: underline;text-align: center;">Seeing All</h3>
             <?php
-            $query_stores_order="SELECT * FROM `order` WHERE order_customer_id={$_SESSION['customer_id']};";
+            $query_stores_order="SELECT * FROM `order_` WHERE order_customer_id={$_SESSION['customer_id']};";
             $query_stores_order=$con->query($query_stores_order);
             while($row=$query_stores_order->fetch_assoc()){
-                $sN="SELECT `city_name` FROM `store` WHERE store_id={$row['store_id']};";
-                $sN = $con->query($sN);
-                $sN = $sN->fetch_assoc();
 
-
-                $rN="SELECT `route_map` FROM `route` WHERE route_id={$row['route_id']};";
+                $rN="SELECT `route_map`,`store_id` FROM `route` WHERE route_id={$row['route_id']};";
                 $rN = $con->query($rN);
                 $rN = $rN->fetch_assoc();
+                $sN="SELECT `city_name` FROM `store` WHERE store_id={$rN['store_id']};";
+                $sN = $con->query($sN);
+                $sN = $sN->fetch_assoc();
                 echo ('
             <div style="background-color: #858989;border-radius: 10px;border: groove #ffffff 2px;max-width: 650px;" class="container" >
-            <h4 style="text-align: center;text-decoration: underline;">Order Id -'.$row['order_id'].' </h4>
+            <h4 style="text-align: center;text-decoration: underline;">Order Id -'.$row['order_id'].'('.$row['order_status'].') </h4>
             <h6>Address:'.$row['delivery_address'].'</h6>
             <h6>Nearby Store:'.$sN['city_name'].'</h6>
             <h6>Route:'.$rN['route_map'].'</h6>
             <h6>Amount:'.$row['total_amount'].'.00LKR ('.$row['payment_status'].')</h6>
             <h6>Ordered Date:'.$row['order_date'].'</h6>
-            <h6>Expected Delivery Date:'.$row['expected_Delivery_Date'].'</h6>
+            <h6>Expected Delivery Date:'.$row['expected_delivery_date'].'</h6>
             <h6>Product:</h6>
             ');
                 $qu_includes="SELECT `order_includes`.`order_id`, `order_includes`.`product_id`, `order_includes`.`quantity`,`product`.`product_name` 

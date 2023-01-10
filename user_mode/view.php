@@ -136,7 +136,7 @@ body{
 				<center><img  class="card-img-top" src="../'.$roww['image'].'" alt="Card image" style="width:auto;"></center>
 				<div class="card-body">
         <form action="'.$_SERVER['REQUEST_URI'].'"  method="post" class="was-validated">
-				  <h3 class="card-title">Brand: '.$roww['brand'].'</h3>
+				
 				  <h3 class="card-title">Price: '.$roww['price'].'.00LKR</h3>
 				  <h3 class="card-title">RAM: '.$roww['ram'].'GB</h3>
 				  <h3 class="card-title">Storage: '.$roww['storage'].'GB</h3>

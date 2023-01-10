@@ -49,8 +49,6 @@ if($ress->num_rows>0){
 
 $customer_id = $_SESSION['customer_id'];
 
-$pay = "Waiting";
-$sta = "To Ship";
 $addes=$_SESSION['address'];
 
 echo ("$customer_id,$addes,{$_POST['nearStore']},{$_POST['route']},$expectDate");
@@ -59,8 +57,10 @@ echo ("$customer_id,$addes,{$_POST['nearStore']},{$_POST['route']},$expectDate")
 
 try {
     $con->begin_transaction();
-    $queryy ="INSERT INTO `order`(`order_customer_id`, `expected_Delivery_Date`, `delivery_address`, `store_id`, `route_id`) 
-VALUES ('$customer_id','$expectDate','$addes','{$_POST['nearStore']}','{$_POST['route']}')";
+    $queryy ="INSERT INTO `order_`(`order_customer_id`, `expected_Delivery_Date`, `delivery_address`,  `route_id`) 
+VALUES ('$customer_id','$expectDate','$addes','{$_POST['route']}')";
+
+
 
 
 
@@ -105,7 +105,7 @@ VALUES ('$customer_id','$expectDate','$addes','{$_POST['nearStore']}','{$_POST['
             die;
         }
 
-        $sql = "UPDATE `order` SET `total_amount`='$total_amount' WHERE order_id='$last_id'";
+        $sql = "UPDATE `order_` SET `total_amount`='$total_amount' WHERE order_id='$last_id'";
         mysqli_query($con, $sql);
 
 
@@ -115,7 +115,10 @@ VALUES ('$customer_id','$expectDate','$addes','{$_POST['nearStore']}','{$_POST['
 }catch (Exception $e) {
 // An exception has been thrown
 // We must rollback the transaction
+    echo 'hello';
+    die();
     $con->rollback();
+    die();
 }
 
  header("location: orderPlaced.php");

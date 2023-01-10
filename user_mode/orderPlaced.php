@@ -94,7 +94,7 @@ body{
 			<h2 style="text-align: center;" ><u>Welcome To Your Cart</u></h2>
       
 			<?php
-            $sql1="SELECT * FROM `order` WHERE order_customer_id={$_SESSION['customer_id']} ORDER BY order_id DESC LIMIT 1";
+            $sql1="SELECT * FROM `order_` WHERE order_customer_id={$_SESSION['customer_id']} ORDER BY order_id DESC LIMIT 1";
             $sql1=$con->query($sql1);
             $sql1=$sql1->fetch_assoc();
             $sql2="SELECT * FROM `order_includes` WHERE order_id={$sql1['order_id']};";
@@ -130,14 +130,15 @@ body{
 if($total_amount==0){
     header("Location: cart.php");
 }
-$sN="SELECT `city_name` FROM `store` WHERE store_id={$sql1['store_id']};";
-$sN = $con->query($sN);
-$sN = $sN->fetch_assoc();
 
 
-$rN="SELECT `route_map` FROM `route` WHERE route_id={$sql1['route_id']};";
+
+$rN="SELECT `route_map`,`store_id` FROM `route` WHERE route_id={$sql1['route_id']};";
 $rN = $con->query($rN);
 $rN = $rN->fetch_assoc();
+$sN="SELECT `city_name` FROM `store` WHERE store_id={$rN['store_id']};";
+$sN = $con->query($sN);
+$sN = $sN->fetch_assoc();
 echo('
 <div class="detailsOfCustomer row">
     <ul>
@@ -145,7 +146,7 @@ echo('
         <li>Nearby Store:'.$sN['city_name'].'</li>
         <li>Route:'.$rN['route_map'].'</li>
         <li>Phone Number:'.$_SESSION['phone_number'].'</li>
-        <li>Expected Delivery Date:'.$sql1['expected_Delivery_Date'].'</li>
+        <li>Expected Delivery Date:'.$sql1['expected_delivery_date'].'</li>
         <li>Total Amount:'.$total_amount.'.00LKR</li>
     </ul>
     <form>
