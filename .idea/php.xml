@@ -15,7 +15,7 @@
       <path value="$PROJECT_DIR$/dashboard/vendor/rakit/validation" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration">
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.0">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
   <component name="PhpStanOptionsConfiguration">
