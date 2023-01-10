@@ -3,7 +3,7 @@
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
-$dbname = "SupplyChain";
+$dbname = "vvvv";
 
 if(!$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))
 {
