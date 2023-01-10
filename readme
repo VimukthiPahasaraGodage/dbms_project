@@ -1,7 +1,5 @@
-!!!Root Folder Name "dbms_project"
+!!!Root Folder Name "Supply-Chain"
 01)In database folder DML is located 
 02)Edit connection file according to your connection name
-      (connection->connection.php and dashboard->config->db_connect.php)
-03)index.php file is located in User_mode->index.php (for customer side)
-04)index.php file is located in dashboard->index.php (for office side)
-
+      (connection->connection.php)
+03)Index.php file is located in User_mode->index.php
