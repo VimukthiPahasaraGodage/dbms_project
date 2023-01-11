@@ -36,21 +36,15 @@
                 $end_date = $year.'-12-31';
             }
             // Query the table and generate a report
-            $sql = "SELECT o.order_date, o.order_id, o.order_customer_id, c.customer_name, o.total_amount FROM order_ AS o LEFT JOIN customer AS c ON o.order_customer_id = c.customer_id WHERE o.order_date => $start_date AND o.order_date <= $end_date AND o.payment_status = 'PAID' ORDER BY o.order_id ASC;";
-            $result = mysqli_query($connection, $sql);
-            if($result){
-                $results = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                mysqli_free_result($result);
-                $sql = "SELECT SUM(o.total_amount) AS total_amount FROM order_ AS o LEFT JOIN customer AS c ON o.order_customer_id = c.customer_id WHERE o.order_date => $start_date AND o.order_date <= $end_date AND o.payment_status = 'PAID';";
-                $result = mysqli_query($connection,$sql);
-                if($result){
-                    $total_amount = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                }else{
-                    //TODO: handle the error
-                }
-            }else{
-                //TODO: handle the error
-            }
+            $sql = "SELECT * 
+                    FROM quarterly_sales
+                    WHERE o.order_date => $start_date AND o.order_date <= $end_date
+                    ORDER BY order_id;";
+            $records = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
+            $sql = "SELECT SUM(total_amount) 
+                    FROM quarterly_sales
+                    WHERE o.order_date => $start_date AND o.order_date <= $end_date;";
+            $total_amount = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
         } else {
             $validation_errors = $validation->errors();
         }
@@ -65,7 +59,7 @@
     </div>
 </nav>
 <div class="container">
-    <form action="sales_report.php" method="post">
+    <form action="quarterly_sales_report.php" method="post">
         <div class="input-field">
             <input type="number" id="year" name="year" value="<?php echo $year; ?>">
             <label for="year">Year</label>
@@ -95,14 +89,14 @@
         </thead>
         <tboady>
             <?php
-                if(count($results) > 0){
-                    foreach ($results as $result){
+                if(count($records) > 0){
+                    foreach ($records as $record){
                         echo '<tr>';
-                        echo "<td>{$result['order_date']}</td>";
-                        echo "<td>{$result['order_id']}</td>";
-                        echo "<td>{$result['customer_id']}</td>";
-                        echo "<td>{$result['customer_name']}</td>";
-                        echo "<td>{$result['total_amount']}</td>";
+                        echo "<td>{$record['order_date']}</td>";
+                        echo "<td>{$record['order_id']}</td>";
+                        echo "<td>{$record['customer_id']}</td>";
+                        echo "<td>{$record['customer_name']}</td>";
+                        echo "<td>{$record['total_amount']}</td>";
                         echo '</tr>';
                     }
                     echo '<tr>';

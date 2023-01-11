@@ -16,7 +16,7 @@
                         <p></p>
                     </div>
                     <div class="card-action center">
-                        <a href="sales_report.php">Generate</a>
+                        <a href="quarterly_sales_report.php">Generate</a>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                         <p></p>
                     </div>
                     <div class="card-action center">
-                        <a href="sales_report_on_routes.php">Generate</a>
+                        <a href="sales_report_on_cities_and_routes.php">Generate</a>
                     </div>
                 </div>
             </div>
