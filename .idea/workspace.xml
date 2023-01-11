@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4b65df3f-0487-4cef-b339-e312466eb6ad" name="Changes" comment="Commit before merging with luxshan23">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/connection/connection.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/connection/functions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dashboard/reports/sales_report.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dashboard/reports/sales_report_on_routes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/DDL.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/DML.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guest_mode/about.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guest_mode/contact.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guest_mode/forgotpassword.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guest_mode/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guest_mode/signup.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guest_mode/style/background/back.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guest_mode/style/style_login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guest_mode/wrongpass.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Asus_6Z.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Asus_ROG.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Asus_Zenfone.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Blackberry_Evolve.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Blackberry_Keyone.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gionee_A1.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gionee_Marathon_M5_Plus.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gionee_S6_Pro.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Google_Pixel_3.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Google_Pixel_3_XL.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Google_Pixel_3a.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/HTC_Desire_816G.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/HTC_ONE-A9.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/HTC_U11.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Honor_8C.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Honor_9_Lite.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/LG_G2_D802.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/LG_G4.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/LG_G5.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/LG_G7_ThinQ.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Mi_Mix_2.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Moto_Turbo.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Moto_X4.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Moto_Z.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Moto_Z2_Force.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Nokia_8.1.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Nokia_8_Sirocco.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Nokia_9.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/OPPO_F11_Pro.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/OPPO_F5.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/OPPO_F5_Youth.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/OPPO_F9_Pro.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/OPPO_Find_X.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/OPPO_K1.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/OPPO_Reno_10x_Zoom.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Realme_3_Pro.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Realme_3i.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Realme_C2.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Realme_X.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Redmi_K20_Pro.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Samsung_Galaxy_A10.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Samsung_Galaxy_A2_Core.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Samsung_Galaxy_J6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Samsung_Galaxy_M30.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Samsung_Galaxy_On8.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Sony_Xperia_XA_Ultra_Dual.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Sony_Xperia_XZ_Dual.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Sony_Xperia_Z3.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Vivo_Y91.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Vivo_Z1Pro.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/details.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/~$list.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/procedures/Reports.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/triggers/order_related_triggers.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/addToCart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/cart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/detailsEdit.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/logout.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/myOrders.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/order.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/orderDetailsGet.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/orderDetailsGetFinal.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/orderPlaced.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/remove.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/save.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_mode/view.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/dashboard/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
+    <include_path>
+      <path value="$PROJECT_DIR$/dashboard/vendor/composer" />
+      <path value="$PROJECT_DIR$/dashboard/vendor/rakit/validation" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="2K8DkKOnASELjPuF6PaTuomhcba" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/dbms_project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b65df3f-0487-4cef-b339-e312466eb6ad" name="Changes" comment="" />
+      <created>1673347457945</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673347457945</updated>
+      <workItem from="1673347459414" duration="830000" />
+      <workItem from="1673348508559" duration="15000" />
+      <workItem from="1673348534807" duration="11000" />
+      <workItem from="1673351222752" duration="367000" />
+      <workItem from="1673351624357" duration="23000" />
+      <workItem from="1673352264679" duration="237000" />
+      <workItem from="1673352829488" duration="1126000" />
+      <workItem from="1673356054085" duration="5175000" />
+      <workItem from="1673403693840" duration="7340000" />
+      <workItem from="1673439931991" duration="217000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial Commit">
+      <created>1673347642234</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673347642234</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Initial Commit">
+      <created>1673347930802</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1673347930802</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Initial Commit">
+      <created>1673351242446</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673351242446</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Final Commit">
+      <created>1673353355468</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673353355468</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Final Commit">
+      <created>1673353472178</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673353472178</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Final Commit">
+      <created>1673365700651</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673365700651</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Final Commit">
+      <created>1673414686233</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1673414686233</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+    <MESSAGE value="Initial Commit" />
+    <MESSAGE value="Final Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final Commit" />
+  </component>
+</project>
