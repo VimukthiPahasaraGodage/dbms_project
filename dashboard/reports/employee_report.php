@@ -5,6 +5,8 @@
 
     $validation_errors = null;
     $year = '';
+    $driver_records = null;
+    $driver_assistant_records = null;
 
     if(isset($_POST['submit'])) {
         $validator = new Validator;
@@ -22,18 +24,18 @@
             $start_date = $year.'-01-01';
             $end_date = $year.'-12-31';
             // Query the table and generate a report
-            $sql = "SELECT NIC_driver, name, SUM(hours) AS total_hours
+            $sql = 'SELECT NIC_driver, name, SUM(hours) AS total_hours
                     FROM driver_analytics
-                    WHERE order_date => $start_date AND order_date <= $end_date
+                    WHERE date >= "'.$start_date.'" AND date <= "'.$end_date.'"
                     GROUP BY NIC_driver
-                    ORDER BY NIC_driver;";
-            $driver_records = mysqli_fetch_array(mysqli_query($connection, $sql), MYSQLI_ASSOC);
-            $sql = "SELECT NIC_driver_assistant, name, SUM(hours) total_hours
+                    ORDER BY NIC_driver;';
+            $driver_records = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
+            $sql = 'SELECT NIC_driver_assistant, name, SUM(hours) total_hours
                     FROM driver_assistant_analytics
-                    WHERE order_date => $start_date AND order_date <= $end_date
+                    WHERE date >= "'.$start_date.'" AND date <= "'.$end_date.'"
                     GROUP BY NIC_driver_assistant
-                    ORDER BY NIC_driver_assistant;";
-            $driver_assistant_records = mysqli_fetch_array(mysqli_query($connection, $sql), MYSQLI_ASSOC);
+                    ORDER BY NIC_driver_assistant;';
+            $driver_assistant_records = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
         } else {
             $validation_errors = $validation->errors();
         }
@@ -43,7 +45,7 @@
 
     <nav class="nav-wrapper indigo">
         <div class="container">
-            <a href="index.php" class="brand-logo">Company A</a>
+            <a href="index.php" class="brand-logo">Company A - Employee Analytics</a>
         </div>
     </nav>
     <div class="container">
@@ -70,7 +72,7 @@
             </thead>
             <tboady>
                 <?php
-                if(count($driver_assistant_records) > 0){
+                if(is_array($driver_assistant_records) && count($driver_assistant_records) > 0){
                     foreach ($driver_assistant_records as $record){
                         echo '<tr>';
                         echo "<td>{$record['NIC_driver_assistant']}</td>";
@@ -99,7 +101,7 @@
             </thead>
             <tboady>
                 <?php
-                if(count($driver_records) > 0){
+                if(is_array($driver_records) && count($driver_records) > 0){
                     foreach ($driver_records as $record){
                         echo '<tr>';
                         echo "<td>{$record['NIC_driver']}</td>";

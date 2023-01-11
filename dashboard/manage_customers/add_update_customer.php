@@ -89,7 +89,7 @@
 
     <nav class="nav-wrapper indigo">
         <div class="container">
-            <a href="#" class="brand-logo">Company A</a>
+            <a href="index.php" class="brand-logo">Company A</a>
         </div>
     </nav>
 

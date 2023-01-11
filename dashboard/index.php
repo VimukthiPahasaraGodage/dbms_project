@@ -24,7 +24,7 @@
             <div class="col s12 l4">
                 <div class="card small">
                     <div class="card-content">
-                        <span class="card-title">Order</span>
+                        <span class="card-title">Manage Orders</span>
                         <p>Place an order for an customer</p>
                     </div>
                     <div class="card-action center">
@@ -48,7 +48,7 @@
             <div class="col s12 l4">
                 <div class="card small">
                     <div class="card-content">
-                        <span class="card-title">Add a Store</span>
+                        <span class="card-title">Add, Update & Delete a Store</span>
                         <p>Add new store to the supply chain</p>
                     </div>
                     <div class="card-action center">
@@ -70,7 +70,7 @@
             <div class="col s12 l4">
                 <div class="card small">
                     <div class="card-content">
-                        <span class="card-title">Reports</span>
+                        <span class="card-title">Generate Reports</span>
                         <p>Generate quarterly sales reports, product analytics, city and route analytics, customer analytics, employee analytics</p>
                     </div>
                     <div class="card-action center">

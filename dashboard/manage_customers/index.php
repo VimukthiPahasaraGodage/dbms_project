@@ -21,7 +21,7 @@
     <?php include ($_SERVER['DOCUMENT_ROOT'].'/dbms_project/dashboard/templates/header.php') ?>
     <nav class="nav-wrapper indigo">
         <div class="container">
-            <a href="#" class="brand-logo">Company A</a>
+            <a href="index.php" class="brand-logo">Company A</a>
         </div>
     </nav>
     <div class="container">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="input-field">
                     <select id="order" name="order">
-                        <option value="" disabled selected>Choose and order</option>
+                        <option value="" disabled selected>Choose an order</option>
                         <option value="ASC">Ascending Order</option>
                         <option value="DESC">Descending Order</option>
                     </select>

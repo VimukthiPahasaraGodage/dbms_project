@@ -1,5 +1,6 @@
 <?php 
 session_start();
+echo $_SERVER['DOCUMENT_ROOT'];
 include($_SERVER['DOCUMENT_ROOT'] . "/connection/connection.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/connection/functions.php");
 if (isset($con)) {

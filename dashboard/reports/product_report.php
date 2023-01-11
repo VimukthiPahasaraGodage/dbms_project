@@ -5,6 +5,7 @@
 
     $validation_errors = null;
     $year = '';
+    $records = null;
 
     if(isset($_POST['submit'])) {
         $validator = new Validator;
@@ -22,20 +23,20 @@
             $start_date = $year.'-01-01';
             $end_date = $year.'-12-31';
             // Query the table and generate a report
-            $sql = "SELECT product_id, product_name, SUM(quantity) AS quantity, COUNT(DISTINCT order_id) AS num_orders 
+            $sql = 'SELECT product_id, product_name, SUM(quantity) AS quantity, COUNT(DISTINCT order_id) AS num_orders 
                     FROM product_analytics 
-                    WHERE order_date => $start_date AND order_date <= $end_date
-                    GROUP BY product_id
-                    ORDER BY quantity, num_orders;";
-            $records = mysqli_fetch_array(mysqli_query($connection, $sql), MYSQLI_ASSOC);
-            $sql = "SELECT SUM(quantity) AS total_quantity
+                    WHERE order_date >= "'.$start_date.'" AND order_date <= "'.$end_date.'" 
+                    GROUP BY product_id 
+                    ORDER BY quantity, num_orders;';
+            $records = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
+            $sql = 'SELECT SUM(quantity) AS total_quantity
                     FROM product_analytics
-                    WHERE order_date => $start_date AND order_date <= $end_date;";
-            $total_product_quantity = mysqli_fetch_array(mysqli_query($connection, $sql), MYSQLI_ASSOC);
-            $sql = "SELECT COUNT(DISTINCT order_id) AS total_orders
+                    WHERE order_date >= "'.$start_date.'" AND order_date <= "'.$end_date.'";';
+            $total_product_quantity = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
+            $sql = 'SELECT COUNT(DISTINCT order_id) AS total_orders
                     FROM product_analytics
-                    WHERE order_date => $start_date AND order_date <= $end_date;";
-            $total_order_count = mysqli_fetch_array(mysqli_query($connection, $sql), MYSQLI_ASSOC);
+                    WHERE order_date >= "'.$start_date.'" AND order_date <= "'.$end_date.'";';
+            $total_order_count = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
         } else {
             $validation_errors = $validation->errors();
         }
@@ -45,7 +46,7 @@
 
     <nav class="nav-wrapper indigo">
         <div class="container">
-            <a href="index.php" class="brand-logo">Company A</a>
+            <a href="index.php" class="brand-logo">Company A - Product Analytics</a>
         </div>
     </nav>
     <div class="container">
@@ -73,7 +74,7 @@
             </thead>
             <tboady>
                 <?php
-                if(count($records) > 0){
+                if(is_array($records) && count($records) > 0){
                     foreach ($records as $record){
                         echo '<tr>';
                         echo "<td>{$record['product_id']}</td>";
@@ -84,11 +85,11 @@
                     }
                     echo '<tr>';
                     echo "<td colspan='3'>Total number of products sold in year:$year</td>";
-                    echo "<td>{$total_product_quantity['total_quantity']}</td>";
+                    echo "<td>{$total_product_quantity[0]['total_quantity']}</td>";
                     echo '</tr>';
                     echo '<tr>';
                     echo "<td colspan='3'>Total number of orders in year:$year</td>";
-                    echo "<td>{$total_order_count['total_orders']}</td>";
+                    echo "<td>{$total_order_count[0]['total_orders']}</td>";
                     echo '</tr>';
                 }else{
                     echo '<tr>';

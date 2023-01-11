@@ -1,7 +1,7 @@
 <?php
     include ($_SERVER['DOCUMENT_ROOT'].'/dbms_project/dashboard/config/db_connect.php');
 
-    $limit = 2;
+    $limit = 5;
     $page = 1;
     if($_POST['page'] > 1){
         $start = (($_POST['page'] - 1) * $limit);

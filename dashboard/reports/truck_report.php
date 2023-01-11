@@ -5,6 +5,7 @@
 
     $validation_errors = null;
     $year = '';
+    $records = null;
 
     if(isset($_POST['submit'])) {
         $validator = new Validator;
@@ -22,16 +23,16 @@
             $start_date = $year.'-01-01';
             $end_date = $year.'-12-31';
             // Query the table and generate a report
-            $sql = "SELECT truck_registration_no, SUM(duration) AS total_duration
+            $sql = 'SELECT truck_registration_no, SUM(duration) AS total_duration
                     FROM truck_analytics
-                    WHERE order_date => $start_date AND order_date <= $end_date
+                    WHERE date >= "'.$start_date.'" AND date <= "'.$end_date.'"
                     GROUP BY truck_registration_no
-                    ORDER BY truck_registration_no;";
-            $records = mysqli_fetch_array(mysqli_query($connection, $sql), MYSQLI_ASSOC);
-            $sql = "SELECT SUM(total_duration) AS total_duration
+                    ORDER BY truck_registration_no;';
+            $records = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
+            $sql = 'SELECT SUM(duration) AS total_duration
                     FROM truck_analytics
-                    WHERE order_date => $start_date AND order_date <= $end_date;";
-            $total_delivery_duration = mysqli_fetch_array(mysqli_query($connection, $sql), MYSQLI_ASSOC);
+                    WHERE date >= "'.$start_date.'" AND date <= "'.$end_date.'";';
+            $total_delivery_duration = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
         } else {
             $validation_errors = $validation->errors();
         }
@@ -41,7 +42,7 @@
 
 <nav class="nav-wrapper indigo">
     <div class="container">
-        <a href="index.php" class="brand-logo">Company A</a>
+        <a href="index.php" class="brand-logo">Company A - Truck Analytics</a>
     </div>
 </nav>
 <div class="container">
@@ -67,16 +68,16 @@
         </thead>
         <tboady>
             <?php
-            if(count($records) > 0){
+            if(is_array($records) && count($records) > 0){
                 foreach ($records as $record){
                     echo '<tr>';
                     echo "<td>{$record['truck_registration_no']}</td>";
-                    echo "<td>{$record['total_duration']}</td>";
+                    echo ($record['total_duration'] != null)? "<td>{$record['total_duration']}</td>":"<td>0</td>";
                     echo '</tr>';
                 }
                 echo '<tr>';
                 echo "<td>Total hours trucks used in year:$year</td>";
-                echo "<td>{$total_delivery_duration['total_duration']}</td>";
+                echo "<td>{$total_delivery_duration[0]['total_duration']}</td>";
                 echo '</tr>';
             }else{
                 echo '<tr>';
