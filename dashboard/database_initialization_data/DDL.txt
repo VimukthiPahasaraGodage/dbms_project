@@ -230,3 +230,4 @@ CREATE VIEW driver_assistant_analytics AS
     SELECT r.NIC_driver_assistant, d.name, r.date, DATEDIFF(HOUR, r.shift_start_time, r.shift_end_time) AS hours
     FROM driver_assistant_roster AS r
     LEFT JOIN driver_assistant AS d ON r.NIC_driver_assistant = d.NIC;
+
