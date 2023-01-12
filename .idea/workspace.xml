@@ -5,7 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b65df3f-0487-4cef-b339-e312466eb6ad" name="Changes" comment="Final Commit">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/manage_customers/add_update_customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/manage_customers/add_update_customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/manage_customers/delete_customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/manage_customers/delete_customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/manage_customers/fetch_customers.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/manage_customers/fetch_customers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/manage_customers/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/manage_customers/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/reports/customer_report.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/reports/customer_report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/reports/employee_report.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/reports/employee_report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/reports/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/reports/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/reports/product_report.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/reports/product_report.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/reports/sales_report.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/reports/sales_report_on_routes.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DDL.txt" beforeDir="false" afterPath="$PROJECT_DIR$/database/DDL.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DML.txt" beforeDir="false" afterPath="$PROJECT_DIR$/database/DML.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guest_mode/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/guest_mode/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guest_mode/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/guest_mode/signup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guest_mode/wrongpass.php" beforeDir="false" afterPath="$PROJECT_DIR$/guest_mode/wrongpass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme" beforeDir="false" afterPath="$PROJECT_DIR$/readme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/triggers/order_related_triggers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/triggers/order_related_triggers.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_mode/addToCart.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_mode/addToCart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_mode/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_mode/cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_mode/detailsEdit.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_mode/detailsEdit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_mode/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_mode/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_mode/myOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_mode/myOrders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_mode/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_mode/order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_mode/orderDetailsGet.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_mode/orderDetailsGet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_mode/orderDetailsGetFinal.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_mode/orderDetailsGetFinal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_mode/orderPlaced.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_mode/orderPlaced.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_mode/remove.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_mode/remove.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_mode/save.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_mode/save.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_mode/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_mode/view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,20 +70,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/dbms_project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/dbms_project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "configurable.group.build",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -70,7 +105,15 @@
       <workItem from="1673352264679" duration="237000" />
       <workItem from="1673352829488" duration="1126000" />
       <workItem from="1673356054085" duration="5175000" />
-      <workItem from="1673403693840" duration="7340000" />
+      <workItem from="1673403693840" duration="7379000" />
+      <workItem from="1673440401627" duration="2270000" />
+      <workItem from="1673446385157" duration="299000" />
+      <workItem from="1673452538156" duration="249000" />
+      <workItem from="1673453078707" duration="2239000" />
+      <workItem from="1673463415167" duration="688000" />
+      <workItem from="1673483601414" duration="3569000" />
+      <workItem from="1673487408756" duration="1044000" />
+      <workItem from="1673488864288" duration="264000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1673347642234</created>
@@ -121,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673414686233</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Final Commit">
+      <created>1673419112098</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673419112098</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

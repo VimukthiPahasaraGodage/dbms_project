@@ -1,6 +1,6 @@
 <?php
-    include ($_SERVER['DOCUMENT_ROOT'].'/dashboard/config/db_connect.php');
-    require($_SERVER['DOCUMENT_ROOT'].'/dashboard/vendor/autoload.php');
+    include ($_SERVER['DOCUMENT_ROOT'].'/dbms_project/dashboard/config/db_connect.php');
+    require($_SERVER['DOCUMENT_ROOT'].'/dbms_project/dashboard/vendor/autoload.php');
     use Rakit\Validation\Validator;
 
     $validation_errors = null;
@@ -85,11 +85,11 @@
     }
 ?>
 <html>
-    <?php include($_SERVER['DOCUMENT_ROOT'].'/dashboard/templates/header.php') ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'].'/dbms_project/dashboard/templates/header.php') ?>
 
     <nav class="nav-wrapper indigo">
         <div class="container">
-            <a href="#" class="brand-logo">Company A</a>
+            <a href="index.php" class="brand-logo">Company A</a>
         </div>
     </nav>
 

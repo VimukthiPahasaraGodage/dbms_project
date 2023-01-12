@@ -23,20 +23,16 @@
             $start_date = $year.'-01-01';
             $end_date = $year.'-12-31';
             // Query the table and generate a report
-            $sql = 'SELECT customer_id, customer_name, COUNT(DISTINCT order_id) AS num_orders, SUM(total_amount) AS total_amount
-                    FROM customer_analytics
-                    WHERE order_date >= "'.$start_date.'" AND order_date <= "'.$end_date.'"
-                    GROUP BY customer_id
-                    ORDER BY total_amount, num_orders;';
+            $sql = 'SELECT truck_registration_no, SUM(duration) AS total_duration
+                    FROM truck_analytics
+                    WHERE date >= "'.$start_date.'" AND date <= "'.$end_date.'"
+                    GROUP BY truck_registration_no
+                    ORDER BY truck_registration_no;';
             $records = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
-            $sql = 'SELECT COUNT(DISTINCT order_id) AS total_orders
-                    FROM customer_analytics
-                    WHERE order_date >= "'.$start_date.'" AND order_date <= "'.$end_date.'";';
-            $total_order_count = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
-            $sql = 'SELECT SUM(total_amount) AS total_amount
-                        FROM customer_analytics
-                        WHERE order_date >= "'.$start_date.'" AND order_date <= "'.$end_date.'";';
-            $total_sales_amount = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
+            $sql = 'SELECT SUM(duration) AS total_duration
+                    FROM truck_analytics
+                    WHERE date >= "'.$start_date.'" AND date <= "'.$end_date.'";';
+            $total_delivery_duration = mysqli_fetch_all(mysqli_query($connection, $sql), MYSQLI_ASSOC);
         } else {
             $validation_errors = $validation->errors();
         }
@@ -46,11 +42,11 @@
 
 <nav class="nav-wrapper indigo">
     <div class="container">
-        <a href="index.php" class="brand-logo">Company A - Customer Analytics</a>
+        <a href="index.php" class="brand-logo">Company A - Truck Analytics</a>
     </div>
 </nav>
 <div class="container">
-    <form action="customer_report.php" method="POST">
+    <form action="truck_report.php" method="POST">
         <div class="input-field">
             <input type="number" id="year" name="year" value="<?php echo $year; ?>">
             <label for="year">Year</label>
@@ -63,13 +59,11 @@
 </div>
 <div class="report">
     <table class="responsive-table stripped centered highlight">
-        <caption>Customer Analytics for Year-<?php echo $year?></caption>
+        <caption>Truck Analytics for Year-<?php echo $year?></caption>
         <thead>
         <tr>
-            <th>Customer ID</th>
-            <th>Customer Name</th>
-            <th>Number of Orders</th>
-            <th>Total Amount</th>
+            <th>Truck Registration No.</th>
+            <th>Total Used Hours</th>
         </tr>
         </thead>
         <tboady>
@@ -77,23 +71,17 @@
             if(is_array($records) && count($records) > 0){
                 foreach ($records as $record){
                     echo '<tr>';
-                    echo "<td>{$record['customer_id']}</td>";
-                    echo "<td>{$record['customer_name']}</td>";
-                    echo "<td>{$record['num_orders']}</td>";
-                    echo "<td>{$record['total_amount']}</td>";
+                    echo "<td>{$record['truck_registration_no']}</td>";
+                    echo ($record['total_duration'] != null)? "<td>{$record['total_duration']}</td>":"<td>0</td>";
                     echo '</tr>';
                 }
                 echo '<tr>';
-                echo "<td colspan='3'>Total number of orders in year:$year</td>";
-                echo "<td>{$total_order_count[0]['total_orders']}</td>";
-                echo '</tr>';
-                echo '<tr>';
-                echo "<td colspan='3'>Total sales amount in year:$year</td>";
-                echo "<td>{$total_sales_amount[0]['total_amount']}</td>";
+                echo "<td>Total hours trucks used in year:$year</td>";
+                echo "<td>{$total_delivery_duration[0]['total_duration']}</td>";
                 echo '</tr>';
             }else{
                 echo '<tr>';
-                echo "<td colspan='5'>No data to create the customer analystics for year:$year</td>";
+                echo "<td colspan='2'>No data to create the truck analystics for year:$year</td>";
                 echo '</tr>';
             }
             ?>

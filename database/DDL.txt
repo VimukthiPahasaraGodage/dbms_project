@@ -168,3 +168,54 @@ CREATE TABLE `cart_product` (
 FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE,
 FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE
 );
+
+
+
+/*=========================== Views for generating the reports ============================================*/
+CREATE VIEW quarterly_sales AS
+    SELECT o.order_date, o.order_id, o.order_customer_id, c.customer_name, o.total_amount
+    FROM order_ AS o
+    LEFT JOIN customer AS c ON o.order_customer_id = c.customer_id
+    WHERE o.payment_status = 'PAID';
+
+CREATE VIEW sales_on_routes_and_cities AS
+    SELECT o.order_date, o.order_id, o.order_customer_id, c.customer_name, o.total_amount, o.route_id, t.city_name
+    FROM order_ AS o
+    LEFT JOIN customer AS c ON o.order_customer_id = c.customer_id
+    LEFT JOIN (SELECT s.city_name, r.route_id FROM route AS r LEFT JOIN store AS s ON r.store_id = s.store_id) AS t ON t.route_id = o.route_id
+    WHERE o.payment_status = 'PAID';
+
+CREATE VIEW product_analytics_0 AS
+    SELECT i.order_id, o.order_date, i.product_id, p.product_name, i.quantity, o.payment_status
+    FROM order_includes AS i
+    LEFT JOIN product AS p ON i.product_id = p.product_id
+    LEFT JOIN order_ AS o ON o.order_id = i.order_id;
+
+CREATE VIEW product_analytics AS
+    SELECT *
+    FROM product_analytics_0
+    WHERE payment_status = 'PAID';
+
+CREATE VIEW customer_analytics AS
+    SELECT o.order_id, o.order_date, o.total_amount, c.customer_id, c.customer_name
+    FROM order_ AS o
+    LEFT JOIN customer AS c ON o.order_customer_id = c.customer_id
+    WHERE o.payment_status = 'PAID';
+
+CREATE VIEW truck_analytics AS
+    SELECT t.duration, d.truck_registration_no, d.date
+    FROM delivery_schedule AS d
+    LEFT JOIN (SELECT DISTINCT r.duration, o.delivery_id
+                FROM order_ AS o
+                LEFT JOIN route AS r ON o.route_id = r.route_id
+                WHERE o.order_status = 'DELIVERED') AS t ON t.delivery_id = d.delivery_id;
+
+CREATE VIEW driver_analytics AS
+    SELECT r.NIC_driver, d.name, r.date, TIMESTAMPDIFF(HOUR, r.shift_start_time, r.shift_end_time) AS hours
+    FROM driver_roster AS r
+    LEFT JOIN driver AS d ON r.NIC_driver = d.NIC;
+
+CREATE VIEW driver_assistant_analytics AS
+    SELECT r.NIC_driver_assistant, d.name, r.date, TIMESTAMPDIFF(HOUR, r.shift_start_time, r.shift_end_time) AS hours
+    FROM driver_assistant_roster AS r
+    LEFT JOIN driver_assistant AS d ON r.NIC_driver_assistant = d.NIC;

@@ -1,7 +1,7 @@
 <?php
 session_start();
-include($_SERVER['DOCUMENT_ROOT'] . "/connection/connection.php");
-include($_SERVER['DOCUMENT_ROOT'] . "/connection/functions.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/dbms_project/connection/connection.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/dbms_project/connection/functions.php");
 if(isset($con)){
     check_login($con);
 }

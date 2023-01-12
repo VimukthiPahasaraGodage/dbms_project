@@ -112,74 +112,6 @@ INSERT INTO `cart_product` (`customer_id`, `product_id`, `quantity`) VALUES
 (7, 7, 0);
 
 
-INSERT INTO `order_` (`order_id`, `order_date`, `order_customer_id`, `total_amount`, `expected_delivery_date`, `delivery_address`, `payment_method`, `payment_status`, `order_status`, `route_id`) VALUES
-(1, '2022-12-20', 10, '19999.00', '2023-01-01', 'No 12, Main Street, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 19),
-(2, '2022-12-20', 10, '14990.00', '2023-01-02', 'No 12, Main Street, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 19),
-(3, '2022-12-21', 10, '21998.00', '2023-01-01', 'No 12, Main Street, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 19),
-(4, '2022-12-21', 12, '11998.00', '2023-01-01', 'No 15, School Road, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 20),
-(5, '2022-12-21', 12, '5999.00', '2023-01-02', 'No 15, School Road, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 20),
-(6, '2022-12-21', 13, '22999.00', '2023-01-02', 'No 20, School Road, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 20),
-(7, '2022-12-21', 13, '24990.00', '2023-01-02', 'No 20, School Road, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 20),
-(8, '2022-12-21', 7, '14990.00', '2023-01-03', 'No, 71 Bakery road, Trincomalee', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17),
-(9, '2022-12-21', 7, '20990.00', '2023-01-04', 'No, 71 Bakery road, Trincomalee', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16),
-(10, '2022-12-22', 7, '5290.00', '2023-01-03', 'No, 71 Bakery road, Trincomalee', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17),
-(11, '2022-12-22', 14, '14990.00', '2023-01-04', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16),
-(12, '2022-12-22', 14, '9490.00', '2023-01-03', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17),
-(13, '2022-12-22', 14, '9490.00', '2023-01-04', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16),
-(14, '2022-12-23', 14, '20990.00', '2023-01-03', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17),
-(15, '2022-12-23', 14, '5290.00', '2023-01-03', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17),
-(16, '2022-12-23', 14, '20000.00', '2023-01-04', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16),
-(17, '2022-12-23', 15, '10580.00', '2023-01-03', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17),
-(18, '2022-12-23', 15, '20000.00', '2023-01-04', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16),
-(19, '2022-12-23', 15, '22990.00', '2023-01-03', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17),
-(20, '2022-12-23', 15, '24990.00', '2023-01-03', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17),
-(21, '2022-12-23', 15, '24990.00', '2023-01-04', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16),
-(22, '2022-12-23', 15, '65999.00', '2023-01-03', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17),
-(23, '2022-12-23', 15, '20000.00', '2023-01-04', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16),
-(24, '2022-12-24', 15, '65999.00', '2023-01-15', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PENDING', 'IN_STORE', 16),
-(25, '2022-12-25', 5, '15356.00', '2023-01-05', 'No, 267, Ratmalana road, Colombo', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 13),
-(26, '2022-12-25', 8, '5999.00', '2023-01-06', 'No,40 Katunaayake raod, Negombo', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 10),
-(27, '2022-12-25', 8, '20990.00', '2023-01-07', 'No,40 Katunaayake raod, Negombo', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 10),
-(28, '2022-12-26', 4, '24990.00', '2023-01-08', 'No,102 Galle road, Galle', 'CASH_ON_DELIVERY', 'PENDING', 'CONFIRMED', 7),
-(29, '2022-12-27', 4, '15999.00', '2023-01-09', 'No,102 Galle road, Galle', 'CASH_ON_DELIVERY', 'PENDING', 'CONFIRMED', 7),
-(30, '2023-01-10', 3, '5999.00', '2023-01-18', 'Sunnagam,Jaffna', 'CASH_ON_DELIVERY', 'PENDING', 'CONFIRMED', 1),
-(31, '2023-01-10', 15, '14990.00', '2023-01-17', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PENDING', 'CONFIRMED', 16);
-
-INSERT INTO `order_includes` (`order_id`, `product_id`, `quantity`) VALUES
-(1, 5, 1),
-(2, 2, 1),
-(3, 3, 1),
-(3, 6, 1),
-(4, 3, 2),
-(5, 3, 1),
-(6, 27, 1),
-(7, 14, 1),
-(8, 2, 1),
-(9, 15, 1),
-(10, 11, 1),
-(11, 2, 1),
-(12, 7, 1),
-(13, 7, 1),
-(14, 15, 1),
-(15, 11, 1),
-(16, 19, 1),
-(17, 11, 2),
-(18, 19, 1),
-(19, 38, 1),
-(20, 42, 1),
-(21, 42, 1),
-(22, 46, 1),
-(23, 50, 1),
-(24, 46, 1),
-(25, 10, 1),
-(26, 3, 1),
-(27, 15, 1),
-(28, 14, 1),
-(29, 6, 1),
-(30, 3, 1),
-(31, 2, 1);
-
-
 
 INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198308770070', 'suthan', 'No 10, mountain road, Wellawatte.', '0770147852', 1);
 INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198308770770', 'de Silva','No 10 temple road, Negombo' , '0770147852' ,2 );
@@ -279,34 +211,97 @@ INSERT INTO `delivery_schedule` (`delivery_id`, `date`, `start_time`, `NIC_drive
 INSERT INTO `delivery_schedule` (`delivery_id`, `date`, `start_time`, `NIC_driver`, `NIC_driver_assistant`, `truck_registration_no`) VALUES ('8', '2023-01-07', '09:20:22', '199745689362', '198003473170', 'VD4537');
 INSERT INTO `delivery_schedule` (`delivery_id`, `date`, `start_time`, `NIC_driver`, `NIC_driver_assistant`, `truck_registration_no`) VALUES ('9', '2023-01-09', '11:45:38', '199745289562', '198003473170', 'CS2023');
 
-UPDATE `order_` SET `delivery_id` =1 WHERE order_id=1;
-UPDATE `order_` SET `delivery_id` =2  WHERE order_id=2;
-UPDATE `order_` SET `delivery_id` =1 WHERE order_id=3;
-UPDATE `order_` SET `delivery_id` =1 WHERE order_id=4;
-UPDATE `order_` SET `delivery_id` =2 WHERE order_id=5;
-UPDATE `order_` SET `delivery_id` =2 WHERE order_id=6;
-UPDATE `order_` SET `delivery_id` =2 WHERE order_id=7;
-UPDATE `order_` SET `delivery_id` =3 WHERE order_id=8;
-UPDATE `order_` SET `delivery_id` =4 WHERE order_id=9;
-UPDATE `order_` SET `delivery_id` =3 WHERE order_id=10;
-UPDATE `order_` SET `delivery_id` =4 WHERE order_id=11;
-UPDATE `order_` SET `delivery_id` =3 WHERE order_id=12;
-UPDATE `order_` SET `delivery_id` =4 WHERE order_id=13;
-UPDATE `order_` SET `delivery_id` =3 WHERE order_id=14;
-UPDATE `order_` SET `delivery_id`=3 WHERE order_id=15;
-UPDATE `order_` SET `delivery_id` =4 WHERE order_id=16;
-UPDATE `order_` SET `delivery_id` =3 WHERE order_id=17;
-UPDATE `order_` SET `delivery_id` =4 WHERE order_id=18;
-UPDATE `order_` SET `delivery_id` =3 WHERE order_id=19;
-UPDATE `order_` SET `delivery_id` =3 WHERE order_id=20;
-UPDATE `order_` SET `delivery_id` =4 WHERE order_id=21;
-UPDATE `order_` SET `delivery_id` =3 WHERE order_id=22;
-UPDATE `order_` SET `delivery_id` =4 WHERE order_id=23;
-UPDATE `order_` SET `delivery_id` =NULL WHERE order_id=24;
-UPDATE `order_` SET `delivery_id` =5 WHERE order_id=25;
-UPDATE `order_` SET `delivery_id` =6 WHERE order_id=26;
-UPDATE `order_` SET `delivery_id` =7 WHERE order_id=27;
-UPDATE `order_` SET `delivery_id` =8 WHERE order_id=28;
-UPDATE `order_` SET `delivery_id` =9 WHERE order_id=29;
-UPDATE `order_` SET `delivery_id` =NULL WHERE order_id=30;
-UPDATE `order_` SET `delivery_id` =NULL WHERE order_id=31;
+INSERT INTO `order_` (`order_id`, `order_date`, `order_customer_id`, `total_amount`, `expected_delivery_date`, `delivery_address`, `payment_method`, `payment_status`, `order_status`, `route_id`, `delivery_id`) VALUES
+(1, '2022-12-20', 10, '19999.00', '2023-01-01', 'No 12, Main Street, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 19, 1),
+(2, '2022-12-20', 10, '14990.00', '2023-01-02', 'No 12, Main Street, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 19, 2),
+(3, '2022-12-21', 10, '21998.00', '2023-01-01', 'No 12, Main Street, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 19, 1),
+(4, '2022-12-21', 12, '11998.00', '2023-01-01', 'No 15, School Road, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 20, 1),
+(5, '2022-12-21', 12, '5999.00', '2023-01-02', 'No 15, School Road, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 20, 2),
+(6, '2022-12-21', 13, '22999.00', '2023-01-02', 'No 20, School Road, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 20, 2),
+(7, '2022-12-21', 13, '24990.00', '2023-01-02', 'No 20, School Road, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 20, 2),
+(8, '2022-12-21', 7, '14990.00', '2023-01-03', 'No, 71 Bakery road, Trincomalee', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(9, '2022-12-21', 7, '20990.00', '2023-01-04', 'No, 71 Bakery road, Trincomalee', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(10, '2022-12-22', 7, '5290.00', '2023-01-03', 'No, 71 Bakery road, Trincomalee', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(11, '2022-12-22', 14, '14990.00', '2023-01-04', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(12, '2022-12-22', 14, '9490.00', '2023-01-03', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(13, '2022-12-22', 14, '9490.00', '2023-01-04', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(14, '2022-12-23', 14, '20990.00', '2023-01-03', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(15, '2022-12-23', 14, '5290.00', '2023-01-03', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(16, '2022-12-23', 14, '20000.00', '2023-01-04', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(17, '2022-12-23', 15, '10580.00', '2023-01-03', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(18, '2022-12-23', 15, '20000.00', '2023-01-04', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(19, '2022-12-23', 15, '22990.00', '2023-01-03', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(20, '2022-12-23', 15, '24990.00', '2023-01-03', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(21, '2022-12-23', 15, '24990.00', '2023-01-04', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(22, '2022-12-23', 15, '65999.00', '2023-01-03', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(23, '2022-12-23', 15, '20000.00', '2023-01-04', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(24, '2022-12-24', 15, '65999.00', '2023-01-15', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PENDING', 'IN_STORE', 16, NULL),
+(25, '2022-12-25', 5, '15356.00', '2023-01-05', 'No, 267, Ratmalana road, Colombo', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 13, 5),
+(26, '2022-12-25', 8, '5999.00', '2023-01-06', 'No,40 Katunaayake raod, Negombo', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 10, 6),
+(27, '2022-12-25', 8, '20990.00', '2023-01-07', 'No,40 Katunaayake raod, Negombo', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 10, 7),
+(28, '2022-12-26', 4, '24990.00', '2023-01-08', 'No,102 Galle road, Galle', 'CASH_ON_DELIVERY', 'PENDING', 'CONFIRMED', 7, 8),
+(29, '2022-12-27', 4, '15999.00', '2023-01-09', 'No,102 Galle road, Galle', 'CASH_ON_DELIVERY', 'PENDING', 'CONFIRMED', 7, 9),
+(30, '2023-01-10', 3, '5999.00', '2023-01-18', 'Sunnagam,Jaffna', 'CASH_ON_DELIVERY', 'PENDING', 'CONFIRMED', 1, NULL),
+(31, '2023-01-10', 15, '14990.00', '2023-01-17', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PENDING', 'CONFIRMED', 16, NULL);
+
+
+
+INSERT INTO `transports` (`order_id`, `trip_id`, `date`) VALUES
+(8, 11, '2022-12-27'),
+(9, 11, '2022-12-27'),
+(10, 11, '2022-12-27'),
+(11, 11, '2022-12-27'),
+(12, 11, '2022-12-27'),
+(13, 11, '2022-12-27'),
+(14, 11, '2022-12-27'),
+(15, 11, '2022-12-27'),
+(16, 11, '2022-12-27'),
+(17, 11, '2022-12-27'),
+(18, 11, '2022-12-27'),
+(19, 11, '2022-12-27'),
+(20, 11, '2022-12-27'),
+(21, 11, '2022-12-27'),
+(22, 11, '2022-12-27'),
+(23, 11, '2022-12-27'),
+(24, 12, '2022-12-31'),
+(25, 1, '2022-12-26'),
+(26, 3, '2022-12-29'),
+(27, 4, '2023-01-01'),
+(28, 5, '2023-01-02'),
+(29, 5, '2023-01-02');
+
+INSERT INTO `order_includes` (`order_id`, `product_id`, `quantity`) VALUES
+(1, 5, 1),
+(2, 2, 1),
+(3, 3, 1),
+(3, 6, 1),
+(4, 3, 2),
+(5, 3, 1),
+(6, 27, 1),
+(7, 14, 1),
+(8, 2, 1),
+(9, 15, 1),
+(10, 11, 1),
+(11, 2, 1),
+(12, 7, 1),
+(13, 7, 1),
+(14, 15, 1),
+(15, 11, 1),
+(16, 19, 1),
+(17, 11, 2),
+(18, 19, 1),
+(19, 38, 1),
+(20, 42, 1),
+(21, 42, 1),
+(22, 46, 1),
+(23, 50, 1),
+(24, 46, 1),
+(25, 10, 1),
+(26, 3, 1),
+(27, 15, 1),
+(28, 14, 1),
+(29, 6, 1),
+(30, 3, 1),
+(31, 2, 1);
+
+

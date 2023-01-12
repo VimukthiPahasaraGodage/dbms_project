@@ -1,8 +1,7 @@
 DELIMITER //
 CREATE TRIGGER `status_transporting` BEFORE INSERT ON `transports`
-    FOR EACH ROW
-        UPDATE order_ SET order_status='TRANSPORTING_TO_STORE' WHERE order_id = NEW.order_id;
-END //
+	FOR EACH ROW
+        UPDATE order_ SET order_status='TRANSPORTING_TO_STORE' WHERE order_id = NEW.order_id; //
 DELIMITER ;
 
 
@@ -17,5 +16,4 @@ CREATE TRIGGER `status_instore` BEFORE UPDATE ON `order_`
     END IF;
 END //
 DELIMITER ;
-
 

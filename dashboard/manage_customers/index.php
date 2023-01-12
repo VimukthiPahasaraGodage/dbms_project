@@ -1,5 +1,5 @@
 <?php
-    include($_SERVER['DOCUMENT_ROOT'] . '/dashboard/config/db_connect.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/dbms_project/dashboard/config/db_connect.php');
     if(array_key_exists('mode', $_REQUEST) and array_key_exists('success', $_REQUEST)){
         $mode = $_REQUEST['mode'];
         $result = $_REQUEST['success'];
@@ -18,10 +18,10 @@
         }
     } ?>
 <html>
-    <?php include ($_SERVER['DOCUMENT_ROOT'].'/dashboard/templates/header.php') ?>
+    <?php include ($_SERVER['DOCUMENT_ROOT'].'/dbms_project/dashboard/templates/header.php') ?>
     <nav class="nav-wrapper indigo">
         <div class="container">
-            <a href="#" class="brand-logo">Company A</a>
+            <a href="index.php" class="brand-logo">Company A</a>
         </div>
     </nav>
     <div class="container">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="input-field">
                     <select id="order" name="order">
-                        <option value="" disabled selected>Choose and order</option>
+                        <option value="" disabled selected>Choose an order</option>
                         <option value="ASC">Ascending Order</option>
                         <option value="DESC">Descending Order</option>
                     </select>
@@ -141,7 +141,7 @@
             });
         });
     </script>
-    <?php include ($_SERVER['DOCUMENT_ROOT'].'/dashboard/templates/footer.php') ?>
+    <?php include ($_SERVER['DOCUMENT_ROOT'].'/dbms_project/dashboard/templates/footer.php') ?>
     <script>
         $(document).ready(function () {
             $('select').formSelect();

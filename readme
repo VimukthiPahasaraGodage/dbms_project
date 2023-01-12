@@ -1,4 +1,5 @@
-!!!Root Folder Name "Supply-Chain"
+!!!Root Folder Name "htdocs"
+!!! "htdocs/dbms_project"
 01)In database folder DDL and DML are located 
 02)Edit connection file according to your connection name
       (connection->connection.php)
