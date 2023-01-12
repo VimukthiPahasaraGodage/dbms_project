@@ -1,0 +1,24 @@
+DELIMITER $$
+CREATE TRIGGER check_driver
+BEFORE INSERT ON driver_roster
+FOR EACH ROW
+BEGIN
+    IF driver_work_hour(NEW.NIC_driver)+ROUND(TIMESTAMPDIFF(MINUTE, NEW.shift_start_time, NEW.shift_end_time)/60) > 40 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Cannot insert, working hours exceed the limit';
+    END IF;
+END$$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE TRIGGER check_driver_assistant
+BEFORE INSERT ON driver_assistant_roster
+FOR EACH ROW
+BEGIN
+    IF driver_assistant_work_hour(NEW.NIC_driver_assistant)+ROUND(TIMESTAMPDIFF(MINUTE, NEW.shift_start_time, NEW.shift_end_time)/60) > 60 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Cannot insert, working hours exceed the limit';
+    END IF;
+END$$
+DELIMITER ;
