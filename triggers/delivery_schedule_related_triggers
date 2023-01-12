@@ -22,3 +22,17 @@ BEGIN
     END IF;
 END$$
 DELIMITER ;
+
+
+DELIMITER $$
+CREATE TRIGGER check_deliivery_schedule
+BEFORE INSERT ON delivery_schedule
+FOR EACH ROW
+BEGIN
+    IF (store_id_by_driver(NEW.NIC_driver)!=store_id_by_driver_assistant(NEW.NIC_driver_assistant) OR store_id_by_driver_assistant(NEW.NIC_driver_assistant)!=store_id_by_truck(NEW.truck_registration_no)  OR store_id_by_driver(NEW.NIC_driver)!=store_id_by_truck(NEW.truck_registration_no) )
+    THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Cannot schedule delivery schedule. driver , driver_assistant and truck does not belong to same store';
+    END IF;
+END$$
+DELIMITER ;
