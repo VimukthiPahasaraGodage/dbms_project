@@ -1,0 +1,19 @@
+DELIMITER //
+CREATE TRIGGER `status_transporting` BEFORE INSERT ON `transports`
+	FOR EACH ROW
+        UPDATE order_ SET order_status='TRANSPORTING_TO_STORE' WHERE order_id = NEW.order_id; //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER `status_instore` BEFORE UPDATE ON `order_`
+ FOR EACH ROW BEGIN
+	IF (NEW.delivery_id>0 AND OLD.delivery_id IS NULL) THEN
+    	SET NEW.order_status='IN_STORE';
+    END IF;
+    IF NEW.order_status='DELIVERED' THEN
+    	SET NEW.payment_status='PAID';
+    END IF;
+END //
+DELIMITER ;
+

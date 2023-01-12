@@ -1,0 +1,221 @@
+CREATE DATABASE SupplyChain;
+USE SupplyChain;
+
+CREATE TABLE customer (
+  customer_id INT AUTO_INCREMENT,
+  email VARCHAR(100) NOT NULL,
+  password VARCHAR(64) NOT NULL,
+  customer_name VARCHAR(50) NOT NULL,
+  phone_number CHAR(10) NOT NULL,
+  address VARCHAR(100) NOT NULL,
+  discount NUMERIC(4, 2) DEFAULT 0   CHECK (discount >= 0 AND discount < 100) ,
+  `type` enum('WHOLESALER','RETAILER','END_CUSTOMER') NOT NULL DEFAULT 'END_CUSTOMER'  ,
+PRIMARY KEY (customer_id),
+  UNIQUE (email, password)
+);
+
+CREATE TABLE product (
+  product_id INT AUTO_INCREMENT,
+  product_name VARCHAR(50) NOT NULL,
+  quantity INT DEFAULT 0   CHECK (quantity >= 0),
+  ram INT NOT NULL   CHECK (ram > 0),
+  storage INT NOT NULL   CHECK (storage > 0),
+  display INT NOT NULL   CHECK (display > 0),
+  battery INT NOT NULL   CHECK (battery > 0),
+  image VARCHAR(100) NOT NULL,
+  price NUMERIC(10, 2) NOT NULL   CHECK (price > 0),
+  discount NUMERIC(4, 2) DEFAULT 0   CHECK (discount >= 0 AND discount < 100),
+  train_capacity_consumption INT NOT NULL   CHECK (train_capacity_consumption > 0),
+  PRIMARY KEY (product_id)
+);
+
+CREATE TABLE store (
+  store_id INT AUTO_INCREMENT,
+  city_name VARCHAR(12) NOT NULL,
+  station VARCHAR(12) NOT NULL,
+  capacity INT NOT NULL   CHECK (capacity > 0),
+  PRIMARY KEY (store_id),
+  UNIQUE (station),
+  UNIQUE (city_name)
+);
+
+CREATE TABLE route (
+  route_id INT AUTO_INCREMENT,
+  route_map VARCHAR(300) NOT NULL,
+  duration INT NOT NULL   CHECK (duration > 0),
+  store_id INT,
+  PRIMARY KEY (route_id),
+  FOREIGN KEY (store_id) REFERENCES store(store_id) ON DELETE CASCADE
+);
+
+CREATE TABLE truck (
+  registration_no VARCHAR(8),
+  capacity INT NOT NULL   CHECK (capacity > 0),
+  store_id INT,
+  PRIMARY KEY (registration_no),
+  FOREIGN KEY (store_id) REFERENCES store(store_id) ON DELETE SET NULL
+);
+
+CREATE TABLE driver (
+  NIC VARCHAR(12),
+  license_number VARCHAR(12) NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  address VARCHAR(100) NOT NULL,
+  phone_number CHAR(10) NOT NULL,
+  store_id INT,
+  PRIMARY KEY (NIC),
+  FOREIGN KEY (store_id) REFERENCES store(store_id) ON DELETE SET NULL,
+  UNIQUE (license_number)
+);
+
+CREATE TABLE driver_assistant (
+  NIC VARCHAR(12),
+  name VARCHAR(50) NOT NULL,
+  address VARCHAR(100) NOT NULL,
+  phone_number CHAR(10) NOT NULL,
+  store_id INT,
+  PRIMARY KEY (NIC),
+  FOREIGN KEY (store_id) REFERENCES store(store_id) ON DELETE SET NULL
+);
+CREATE TABLE delivery_schedule (
+  delivery_id INT AUTO_INCREMENT,
+  date DATE NOT NULL,
+  start_time TIME NOT NULL,
+  NIC_driver VARCHAR(12),
+  NIC_driver_assistant VARCHAR(12),
+  truck_registration_no VARCHAR(8),
+  PRIMARY KEY (delivery_id),
+  FOREIGN KEY (truck_registration_no) REFERENCES truck(registration_no) ON DELETE SET NULL,
+  FOREIGN KEY (NIC_driver) REFERENCES driver(NIC) ON DELETE SET NULL,
+  FOREIGN KEY (NIC_driver_assistant) REFERENCES driver_assistant(NIC) ON DELETE SET NULL
+);
+
+CREATE TABLE order_ (
+  order_id INT AUTO_INCREMENT,
+  order_date DATE NOT NULL DEFAULT current_timestamp(),
+  order_customer_id INT NOT NULL,
+  total_amount NUMERIC(20, 2) DEFAULT NULL CHECK (total_amount >= 0),
+  expected_delivery_date DATE NOT NULL  CHECK (DATEDIFF(expected_delivery_date, order_date) + 1 >= 7),
+  delivery_address VARCHAR(100) NOT NULL,
+`payment_method` enum('CASH_ON_DELIVERY','CARD') NOT NULL DEFAULT 'CASH_ON_DELIVERY',
+  `payment_status` enum('PENDING','PAID') NOT NULL DEFAULT 'PENDING',
+  `order_status` enum('CONFIRMED','TRANSPORTING_TO_STORE','IN_STORE','DELIVERING','DELIVERED') NOT NULL DEFAULT 'CONFIRMED',
+  route_id INT,
+  delivery_id INT,
+  PRIMARY KEY (order_id),
+  FOREIGN KEY (route_id) REFERENCES route(route_id) ON DELETE SET NULL,
+  FOREIGN KEY (delivery_id) REFERENCES delivery_schedule(delivery_id) ON DELETE SET NULL,
+  FOREIGN KEY (order_customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE
+);
+
+CREATE TABLE train_schedule (
+  trip_id INT AUTO_INCREMENT,
+  day VARCHAR(10) NOT NULL   CHECK (day IN ('MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY')),
+  departure_time TIME NOT NULL,
+  destination_time TIME NOT NULL,
+  allocated_capacity INT NOT NULL   CHECK (allocated_capacity > 0),
+  departure_station INT NOT NULL,
+  destination_station INT NOT NULL,
+  PRIMARY KEY (trip_id),
+  FOREIGN KEY (departure_station) REFERENCES store(store_id) ON DELETE CASCADE,
+  FOREIGN KEY (destination_station) REFERENCES store(store_id) ON DELETE CASCADE
+);
+
+CREATE TABLE transports (
+  order_id INT,
+  trip_id INT,
+  date DATE,
+  PRIMARY KEY (order_id, trip_id, date),
+  FOREIGN KEY (order_id) REFERENCES order_(order_id) ON DELETE CASCADE,
+  FOREIGN KEY (trip_id) REFERENCES train_schedule(trip_id) ON DELETE CASCADE
+);
+
+CREATE TABLE order_includes (
+  order_id INT,
+  product_id INT,
+  quantity INT NOT NULL   CHECK (quantity > 0),
+  PRIMARY KEY (order_id, product_id),
+  FOREIGN KEY (order_id) REFERENCES order_(order_id) ON DELETE CASCADE,
+  FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE
+);
+
+CREATE TABLE driver_roster (
+  entry_no INT AUTO_INCREMENT,
+  date DATE NOT NULL,
+  shift_start_time TIME NOT NULL,
+  shift_end_time TIME NOT NULL,
+  NIC_driver VARCHAR(12) NOT NULL,
+  PRIMARY KEY (entry_no),
+  FOREIGN KEY (NIC_driver) REFERENCES driver(NIC) ON DELETE CASCADE
+);
+
+CREATE TABLE driver_assistant_roster (
+  entry_no INT AUTO_INCREMENT,
+  date DATE NOT NULL,
+  shift_start_time TIME NOT NULL,
+  shift_end_time TIME NOT NULL,
+  NIC_driver_assistant VARCHAR(12) NOT NULL,
+  PRIMARY KEY (entry_no),
+  FOREIGN KEY (NIC_driver_assistant) REFERENCES driver_assistant(NIC) ON DELETE CASCADE
+);
+
+
+/*-----------------------------------------for web page--------------------------------------------------------------------*/
+CREATE TABLE `cart_product` (
+  `customer_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+FOREIGN KEY (customer_id) REFERENCES customer(customer_id) ON DELETE CASCADE,
+FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE CASCADE
+);
+
+
+
+/*=========================== Views for generating the reports ============================================*/
+CREATE VIEW quarterly_sales AS
+    SELECT o.order_date, o.order_id, o.order_customer_id, c.customer_name, o.total_amount
+    FROM order_ AS o
+    LEFT JOIN customer AS c ON o.order_customer_id = c.customer_id
+    WHERE o.payment_status = 'PAID';
+
+CREATE VIEW sales_on_routes_and_cities AS
+    SELECT o.order_date, o.order_id, o.order_customer_id, c.customer_name, o.total_amount, o.route_id, t.city_name
+    FROM order_ AS o
+    LEFT JOIN customer AS c ON o.order_customer_id = c.customer_id
+    LEFT JOIN (SELECT s.city_name, r.route_id FROM route AS r LEFT JOIN store AS s ON r.store_id = s.store_id) AS t ON t.route_id = o.route_id
+    WHERE o.payment_status = 'PAID';
+
+CREATE VIEW product_analytics_0 AS
+    SELECT i.order_id, o.order_date, i.product_id, p.product_name, i.quantity, o.payment_status
+    FROM order_includes AS i
+    LEFT JOIN product AS p ON i.product_id = p.product_id
+    LEFT JOIN order_ AS o ON o.order_id = i.order_id;
+
+CREATE VIEW product_analytics AS
+    SELECT *
+    FROM product_analytics_0
+    WHERE payment_status = 'PAID';
+
+CREATE VIEW customer_analytics AS
+    SELECT o.order_id, o.order_date, o.total_amount, c.customer_id, c.customer_name
+    FROM order_ AS o
+    LEFT JOIN customer AS c ON o.order_customer_id = c.customer_id
+    WHERE o.payment_status = 'PAID';
+
+CREATE VIEW truck_analytics AS
+    SELECT t.duration, d.truck_registration_no, d.date
+    FROM delivery_schedule AS d
+    LEFT JOIN (SELECT DISTINCT r.duration, o.delivery_id
+                FROM order_ AS o
+                LEFT JOIN route AS r ON o.route_id = r.route_id
+                WHERE o.order_status = 'DELIVERED') AS t ON t.delivery_id = d.delivery_id;
+
+CREATE VIEW driver_analytics AS
+    SELECT r.NIC_driver, d.name, r.date, TIMESTAMPDIFF(HOUR, r.shift_start_time, r.shift_end_time) AS hours
+    FROM driver_roster AS r
+    LEFT JOIN driver AS d ON r.NIC_driver = d.NIC;
+
+CREATE VIEW driver_assistant_analytics AS
+    SELECT r.NIC_driver_assistant, d.name, r.date, TIMESTAMPDIFF(HOUR, r.shift_start_time, r.shift_end_time) AS hours
+    FROM driver_assistant_roster AS r
+    LEFT JOIN driver_assistant AS d ON r.NIC_driver_assistant = d.NIC;

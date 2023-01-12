@@ -1,0 +1,307 @@
+USE SupplyChain;
+
+INSERT INTO `customer` (`customer_id`, `email`, `password`, `customer_name`, `phone_number`, `address`, `discount`, `type`) VALUES
+(1, 'kajaani1705@gmail.com', 'icecream', 'Kajaani ', '0778989758', 'East Puttur, Puttur, Jaffna.', '0.00', 'END_CUSTOMER'),
+(2, 'jubeerathant.20@uom.lk', 'jubee', 'yubee', '0784607845', 'Mallakam, Jaffna', '0.00', 'END_CUSTOMER'),
+(3, 'sathu@gmail.com', 'sathu', 'Sathu', '0775778150', 'Sunnagam,Jaffna', '0.00', 'END_CUSTOMER'),
+(4, 'vimukthi@gmail.com', 'vimukthi', 'Vimukthi', '0771111111', 'No,102 Galle road, Galle', '0.00', 'END_CUSTOMER'),
+(5, 'raj@gmail.com', 'rajraj', 'Raj', '0771111111', 'No, 267, Ratmalana road, Colombo', '0.00', 'END_CUSTOMER'),
+(6, 'kamal@gmail.com', 'kamal', 'Kamal', '0771111111', 'N0, 8 Beach road, Matara', '0.00', 'END_CUSTOMER'),
+(7, 'reshma@gmail.com', 'reshma', 'Reshma', '0771111111', 'No, 71 Bakery road, Trincomalee', '0.00', 'END_CUSTOMER'),
+(8, 'raji@gmail.com', 'rajiraji', 'Raji', '0771111111', 'No,40 Katunaayake raod, Negombo', '0.00', 'END_CUSTOMER'),
+(9, 'luxluxshan2000@gmail.com', 'luxlux', 'Lux', '0773038402', 'N0,11 Palaly road, Jaffna', '0.00', 'END_CUSTOMER'),
+(10, 'perera@gmail.com', 'perera', 'Perera', '0771111111', 'No 12, Main Street, Kandy.', '0.00', 'END_CUSTOMER'),
+(12, 'kumara@gmail.com', 'kumara', 'Kumara', '0771111111', 'No 15, School Road, Kandy.', '0.00', 'END_CUSTOMER'),
+(13, 'barmi@gmail.com', 'barmi', 'Barmi', '0771111111', 'No 20, School Road, Kandy.', '0.00', 'END_CUSTOMER'),
+(14, 'pirathe@gmail.com', 'pirathe', 'Pirathe', '0771111111', 'No 15, Main Road, Trincomalee.', '0.00', 'END_CUSTOMER'),
+(15, 'yogi@gmail.com', 'yogi1', 'Yogi', '0771111111', 'No 25, Main Road, Trincomalee.', '0.00', 'END_CUSTOMER');
+
+
+INSERT INTO `store` (`store_id`, `city_name`, `station`, `capacity`) VALUES
+(1, 'Colombu', 'DEMATAGODA', 600000),
+(2, 'Negombo', 'NEGOMBO', 1000000),
+(3, 'Galle', 'PIYADIGAMA', 100000),
+(4, 'Matara', 'WALGAMA', 100000),
+(5, 'Jaffna', 'PUNKANKULAM', 600000),
+(6, 'Trincomalee', 'CHINA BAY', 100000),
+(7, 'Kandy', 'SUDUHUMPOLA', 300000);
+
+INSERT INTO `route` (`route_id`, `route_map`, `duration`, `store_id`) VALUES
+(1, 'AB19-->AB21', 120, 5),
+(2, 'AB20-->AB21-->A9', 60, 5),
+(3, 'AB18-->AB21-->B417-->AB20', 60, 5),
+(4, 'MATARA-ROUTE-01', 60, 4),
+(5, 'MATARA-ROUTE-02', 60, 4),
+(6, 'MATARA-ROUTE-03', 60, 4),
+(7, 'GALLE-ROUTE-01', 60, 3),
+(8, 'GALLE-ROUTE-02', 60, 3),
+(9, 'GALLE-ROUTE-03', 60, 3),
+(10, 'NEGOMBO-ROUTE-01', 60, 2),
+(11, 'NEGOMBO-ROUTE-02', 60, 2),
+(12, 'NEGOMBO-ROUTE-03', 60, 2),
+(13, 'COLOMBU-ROUTE-01', 60, 1),
+(14, 'COLOMBU-ROUTE-02', 60, 1),
+(15, 'COLOMBU-ROUTE-03', 60, 1),
+(16, 'TRINCO-ROUTE-01', 60, 6),
+(17, 'TRINCO-ROUTE-02', 60, 6),
+(18, 'TRINCO-ROUTE-03', 60, 6),
+(19, 'KANDY-ROUTE-01', 60, 7),
+(20, 'KANDY -ROUTE-02', 60, 7),
+(21, 'KANDY -ROUTE-03', 60, 7);
+
+
+INSERT INTO `product` (`product_id`, `product_name`, `quantity`, `ram`, `storage`, `display`, `battery`, `image`, `price`, `discount`, `train_capacity_consumption`) VALUES
+(1, 'Vivo Y91 (Nebula Purple)', 50, 3, 32, 7, 4030, 'images/Vivo_Y91.PNG', '9990.00', '0.00', 1),
+(2, 'Vivo Z1Pro (Sonic Black)', 50, 4, 64, 6, 5000, 'images/Vivo_Z1Pro.PNG', '14990.00', '0.00', 1),
+(3, 'Realme C2 (Diamond Black)', 50, 2, 16, 6, 4000, 'images/Realme_C2.PNG', '5999.00', '0.00', 1),
+(4, 'Realme 3i (Diamond Blue)', 50, 4, 64, 6, 4230, 'images/Realme_3i.PNG', '9999.00', '0.00', 1),
+(5, 'Realme X (Polar White)', 50, 8, 128, 7, 3765, 'images/Realme_X.PNG', '19999.00', '0.00', 1),
+(6, 'Realme 3 Pro (Nitro Blue)', 50, 6, 64, 6, 4045, 'images/Realme_3_Pro.PNG', '15999.00', '0.00', 1),
+(7, 'Samsung Galaxy J6', 50, 4, 64, 6, 3000, 'images/Samsung_Galaxy_J6.PNG', '9490.00', '0.00', 1),
+(8, 'Samsung Galaxy On8 ', 50, 4, 64, 6, 3500, 'images/Samsung_Galaxy_On8.PNG', '11990.00', '0.00', 1),
+(9, 'Samsung Galaxy A10', 50, 2, 32, 6, 3400, 'images/Samsung_Galaxy_A10.PNG', '7990.00', '0.00', 1),
+(10, 'Samsung Galaxy M30 ', 50, 4, 64, 6, 5000, 'images/Samsung_Galaxy_M30.PNG', '15356.00', '0.00', 1),
+(11, 'Samsung Galaxy A2 Core', 50, 1, 16, 5, 2600, 'images/Samsung_Galaxy_A2_Core.PNG', '5290.00', '0.00', 1),
+(12, 'Honor 9 Lite (Sapphire Blue)', 50, 3, 32, 6, 3000, 'images/Honor_9_Lite.PNG', '7999.00', '0.00', 1),
+(13, 'Honor 8C (Black)', 50, 4, 32, 6, 4000, 'images/Honor_8C.PNG', '7999.00', '0.00', 1),
+(14, 'OPPO F5 (Black)', 50, 6, 64, 6, 3200, 'images/OPPO_F5.PNG', '24990.00', '0.00', 1),
+(15, 'OPPO F11 Pro (Thunder Black)', 50, 6, 64, 7, 4000, 'images/OPPO_F11_Pro.PNG', '20990.00', '0.00', 1),
+(16, 'OPPO Reno 10x Zoom (Jet Black)', 50, 6, 128, 7, 4065, 'images/OPPO_Reno_10x_Zoom.PNG', '39990.00', '0.00', 1),
+(17, 'OPPO Find X ', 50, 8, 256, 6, 3730, 'images/OPPO_Find_X.PNG', '58990.00', '0.00', 1),
+(18, 'OPPO F9 Pro (Sunrise Red)', 50, 6, 64, 6, 3500, 'images/OPPO_F9_Pro.PNG', '20990.00', '0.00', 1),
+(19, 'OPPO K1 (Astral Blue)', 50, 4, 64, 6, 3600, 'images/OPPO_K1.PNG', '20000.00', '0.00', 1),
+(20, 'OPPO F5 Youth', 50, 3, 32, 6, 3200, 'images/OPPO_F5_Youth.PNG', '20000.00', '0.00', 1),
+(21, 'Moto Z Play with Style Mod', 50, 3, 32, 6, 3510, 'images/Moto_Z.PNG', '21990.00', '0.00', 1),
+(22, 'Moto Z2 Force', 50, 6, 64, 6, 2730, 'images/Moto_Z2_Force.PNG', '21999.00', '0.00', 1),
+(23, 'Moto Turbo', 50, 3, 64, 5, 3900, 'images/Moto_Turbo.PNG', '31999.00', '0.00', 1),
+(24, 'Moto X4 (Super Black)', 50, 3, 32, 5, 3000, 'images/Moto_X4.PNG', '20000.00', '0.00', 1),
+(25, 'Redmi K20 Pro (Carbon BlacK)', 50, 6, 128, 6, 4000, 'images/Redmi_K20_Pro.PNG', '27999.00', '0.00', 1),
+(26, 'Mi Mix 2', 50, 6, 128, 6, 3400, 'images/Mi_Mix_2.PNG', '29999.00', '0.00', 1),
+(27, 'Asus Zenfone 2 ZE551ML', 50, 4, 64, 6, 3000, 'images/Asus_Zenfone.PNG', '22999.00', '0.00', 1),
+(28, 'Asus 6Z (Black)', 50, 6, 64, 6, 5000, 'images/Asus_6Z.PNG', '31999.00', '0.00', 1),
+(29, 'Asus ROG (Black)', 50, 8, 128, 6, 4000, 'images/Asus_ROG.PNG', '69999.00', '0.00', 1),
+(30, 'HTC U11+ (Amazing Silver)', 50, 6, 128, 6, 3930, 'images/HTC_U11.PNG', '56990.00', '0.00', 1),
+(31, 'HTC Desire 816G (Octa Core) (White)', 50, 1, 16, 6, 2600, 'images/HTC_Desire_816G.PNG', '21990.00', '0.00', 1),
+(32, 'HTC ONE A9 (Carbon Gray)', 50, 3, 32, 5, 2150, 'images/HTC_ONE-A9.PNG', '32600.00', '0.00', 1),
+(33, 'Nokia 9 (Blue)', 50, 6, 128, 6, 3320, 'images/Nokia_9.PNG', '49999.00', '0.00', 1),
+(34, 'Nokia 8.1 (Iron)', 50, 4, 64, 6, 3000, 'images/Nokia_8.1.PNG', '20799.00', '0.00', 1),
+(35, 'Nokia 8 Sirocco (Black)', 50, 6, 128, 6, 3260, 'images/Nokia_8_Sirocco.PNG', '36999.00', '0.00', 1),
+(36, 'LG G7 ThinQ (Black)', 50, 4, 64, 6, 3000, 'images/LG_G7_ThinQ.PNG', '29999.00', '0.00', 1),
+(37, 'LG G5 (Gold)', 50, 4, 32, 5, 2800, 'images/LG_G5.PNG', '52990.00', '0.00', 1),
+(38, 'LG G4 (Genuine Leather Brown)', 50, 3, 32, 6, 3000, 'images/LG_G4.PNG', '22990.00', '0.00', 1),
+(39, 'LG G2 D802 (Black Gold)', 50, 2, 16, 5, 3000, 'images/LG_G2_D802.PNG', '31971.00', '0.00', 1),
+(40, 'Blackberry Evolve', 50, 4, 64, 6, 4000, 'images/Blackberry_Evolve.PNG', '23355.00', '0.00', 1),
+(41, 'Blackberry Keyone', 50, 4, 64, 5, 3505, 'images/Blackberry_Keyone.PNG', '29990.00', '0.00', 1),
+(42, 'Sony Xperia XA Ultra Dual (Graphite Black)', 50, 3, 16, 6, 2700, 'images/Sony_Xperia_XA_Ultra_Dual.PNG', '24990.00', '0.00', 1),
+(43, 'Sony Xperia Z3+', 50, 3, 32, 5, 2930, 'images/Sony_Xperia_Z3.PNG', '55990.00', '0.00', 1),
+(44, 'Sony Xperia XZ Dual (Platinum)', 50, 3, 64, 5, 2900, 'images/Sony_Xperia_XZ_Dual.PNG', '40990.00', '0.00', 1),
+(45, 'Google Pixel 3 (Clearly White)', 50, 4, 64, 6, 2915, 'images/Google_Pixel_3.PNG', '49999.00', '0.00', 1),
+(46, 'Google Pixel 3 XL (Just Black)', 50, 4, 128, 6, 3430, 'images/Google_Pixel_3_XL.PNG', '65999.00', '0.00', 1),
+(47, 'Google Pixel 3a (Just Black)', 50, 4, 64, 6, 3000, 'images/Google_Pixel_3a.PNG', '39999.00', '0.00', 1),
+(48, 'Gionee A1 (Grey)', 50, 4, 64, 6, 4010, 'images/Gionee_A1.PNG', '21400.00', '0.00', 1),
+(49, 'Gionee Marathon M5 Plus', 50, 3, 64, 6, 5020, 'images/Gionee_Marathon_M5_Plus.PNG', '26999.00', '0.00', 1),
+(50, 'Gionee S6 Pro (Gold)', 50, 4, 32, 6, 3130, 'images/Gionee_S6_Pro.PNG', '20000.00', '0.00', 1);
+
+
+INSERT INTO `cart_product` (`customer_id`, `product_id`, `quantity`) VALUES
+(1, 16, 0),
+(2, 12, 0),
+(2, 14, 0),
+(4, 10, 1),
+(5, 6, 1),
+(7, 7, 0);
+
+
+
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198308770070', 'suthan', 'No 10, mountain road, Wellawatte.', '0770147852', 1);
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198308770770', 'de Silva','No 10 temple road, Negombo' , '0770147852' ,2 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198007773170', 'puthan','No 11, forest road, galle','0770747852' ,3 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197308003240', 'yuthan','No 70, fortroad, matara','0771147852' ,4 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197308732271', 'theva' ,'No 24, kandy road, jaffna', '0711147857' ,5 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197028773240', 'sudanan','No 47, beach road, trincomalee', '0771144252' ,6 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198608571070', 'athukorala', '14A Boyd Pl, Colombo 00300.', '0762282424', 1);
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198308125770', 'de Silva','26 A Alwis Pl, negombo', '0782437594' ,2 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198003473170', 'sarujan','151 Galle Rd, galle', '0777393418' ,3 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197317003240', 'akilavan','11A 19th Ln, matara', '0712776354' ,4 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197308933271', 'hari','21 17th Ln, jaffna', '0776991818' ,5 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197128783740', 'parshith','No 47, beach road, trincomalee', '0761144252' ,6 );
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('196108240170', 'sathsarani', 'No 10, raja veediya road, kandy', '0780144852', 7);
+INSERT INTO `driver_assistant` (`NIC`, `name`, `address`, `phone_number`, `store_id`) VALUES ('196308280070', 'rathnayake', 'No 10, sri dalada veediya road, kandy ', '0760144852', 7);
+
+
+INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('1', '2023-01-01', '06:00:00', '08:45:00', '196108240170');
+INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('2', '2023-01-02', '07:00:00', '08:00:00', '196308280070');
+INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('3', '2023-01-03', '04:00:00', '06:15:00', '197028773240');
+INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('4', '2023-01-04', '11:00:02', '11:08:00', '197128783740');
+INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('5', '2023-01-05', '14:00:45', '17:08:45', '198608571070');
+INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('6', '2023-01-06', '19:09:50', '21:00:50', '198308770770');
+INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('7', '2023-01-07', '13:10:39', '14:15:40', '198308125770');
+INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('8', '2023-01-07', '09:20:22', '11:30:00', '198003473170');
+INSERT INTO `driver_assistant_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES ('9', '2023-01-09', '11:45:38', '17:12:38', '198003473170');
+
+
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('AX3468', '215', '1');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('BE7812', '157', '1');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('AS9021', '208', '5');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('UT7834', '311', '5');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('VD4537', '197', '3');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('KJ6721', '243', '5');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('OP4588', '189', '2');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('HA6283', '210', '1');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('JA6728', '188', '6');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('CS2023', '215', '3');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('MA1024', '177', '2');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('MN1524', '173', '4');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('CD1246', '200', '4');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('YH6421', '260', '7');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('TD1278', '240', '6');
+INSERT INTO truck (registration_no, capacity, store_id) VALUES ('KZ1843', '279', '7');
+
+
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198635678490', 'B2458169','Tharindu','No, 267, Ratmalana road, Colombo', '0778956777','1');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199025637849', 'B4356281','Aadhil','No, 320 Dehiwala road, Colombo', '0778696342','1');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198756566534','B2435621', 'Mathan','No, 123 Seedhuwa, Negombo', '0776895639','2');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198678563566','B4563781', 'Arivalakan','No,45 Katunaayake raod, Negombo', '0777584532','2');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199745289562', 'B3453253','Pasindu','No,20 Park road, Galle', '0772345461','3');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199745689362', 'B3456243','Thamotharan','No,12 Galle road, Galle', '0776895462','3');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198845673892', 'B2487391','Karunarathna','N0, 68 Beach road, Matara', '0777657894','4');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199024567358','B3457834',  'Vinoth','N0,12 Uda PeekWella road, Matara', '0775869953','4');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199956789788', 'B3547808', 'Sivapalan', 'N0,10 Palaly road, Jaffna', '0777467589', '5');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198856789788', 'B5557608', 'Sampath', 'N0,10 Chunnakam road, Jaffna', '0773464589', '5');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199745628390','B3678291', 'Ranjith','No, 60 Bakery road, Trincomalee','0777684756','6');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('198294057686', 'B3469271','Manohar','No, 26 Cathedral road, Trincomalee','0768957647','6');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('199656748921', 'B2489361','Hashitha','N0,23 Galgamuwa road, Kandy', '0776894567','7');
+INSERT INTO `driver` (`NIC`, `license_number`, `name`, `address`, `phone_number`, `store_id`) VALUES ('197656748267', 'B2419321','Premkumar','N0,23 Anniewatta road, Kandy', '0776892947','7');
+
+
+
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('1', '2023-01-01', '06:00:00', '08:45:00', '199656748921');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('2', '2023-01-02', '07:00:00', '08:00:00', '197656748267');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('3', '2023-01-03', '04:00:00', '06:15:00', '199745628390');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('4', '2023-01-04', '11:00:02', '11:08:00', '198294057686');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('5', '2023-01-05', '14:00:45', '17:08:45', '198635678490');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('6', '2023-01-06', '19:09:50', '21:00:50', '198756566534');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('7', '2023-01-07', '13:10:39', '14:15:40', '198678563566');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('8', '2023-01-07', '09:20:22', '11:30:00', '199745689362');
+INSERT INTO `driver_roster` (`entry_no`, `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ('9', '2023-01-09', '11:45:38', '17:12:38', '199745289562');
+
+
+
+INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('MONDAY', '05:00:00', '08:09:00', '8000', '7', '1');
+INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('FRIDAY', '16:05:00', '18:57:00', '5500', '7', '1');
+INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('THURSDAY', '12:48:00', '18:09:00', '3500', '7', '2');
+INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('SUNDAY', '16:53:00', '22:09:00', '4200', '7', '2');
+INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('MONDAY', '14:56:00', '20:38:00', '3900', '7', '3');
+INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('SATURDAY', '12:48:00', '18:49:00', '4500', '7', '3');
+INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('THURSDAY', '15:48:00', '21:42:00', '5300', '7', '4');
+INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('MONDAY', '12:53:00', '19:47:00', '3800', '7', '4');
+INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('SUNDAY', '18:06:00', '05:22:00', '7500', '7', '5');
+INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('WEDNESDAY', '04:56:00', '12:03:00', '6200', '7', '5');
+INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('TUESDAY', '13:56:00', '21:35:00', '6000', '7', '6');
+INSERT INTO train_schedule (day, departure_time, destination_time, allocated_capacity, departure_station, destination_station) VALUES ('SATURDAY', '16:56:00', '07:49:00', '4800', '7', '6');
+
+
+INSERT INTO `delivery_schedule` (`delivery_id`, `date`, `start_time`, `NIC_driver`, `NIC_driver_assistant`, `truck_registration_no`) VALUES ('1', '2023-01-01', '06:00:00', '199656748921', '196108240170', 'YH6421');
+INSERT INTO `delivery_schedule` (`delivery_id`, `date`, `start_time`, `NIC_driver`, `NIC_driver_assistant`, `truck_registration_no`) VALUES ('2', '2023-01-02', '07:00:00', '197656748267', '196308280070', 'KZ1843');
+INSERT INTO `delivery_schedule` (`delivery_id`, `date`, `start_time`, `NIC_driver`, `NIC_driver_assistant`, `truck_registration_no`) VALUES ('3', '2023-01-03', '04:00:00', '199745628390', '197028773240', 'JA6728');
+INSERT INTO `delivery_schedule` (`delivery_id`, `date`, `start_time`, `NIC_driver`, `NIC_driver_assistant`, `truck_registration_no`) VALUES ('4', '2023-01-04', '11:00:02', '198294057686', '197128783740', 'TD1278');
+INSERT INTO `delivery_schedule` (`delivery_id`, `date`, `start_time`, `NIC_driver`, `NIC_driver_assistant`, `truck_registration_no`) VALUES ('5', '2023-01-05', '14:00:45', '198635678490', '198608571070', 'AX3468');
+INSERT INTO `delivery_schedule` (`delivery_id`, `date`, `start_time`, `NIC_driver`, `NIC_driver_assistant`, `truck_registration_no`) VALUES ('6', '2023-01-06', '19:09:50', '198756566534', '198308770770', 'OP4588');
+INSERT INTO `delivery_schedule` (`delivery_id`, `date`, `start_time`, `NIC_driver`, `NIC_driver_assistant`, `truck_registration_no`) VALUES ('7', '2023-01-07', '13:10:39', '198678563566', '198308125770', 'MA1024');
+INSERT INTO `delivery_schedule` (`delivery_id`, `date`, `start_time`, `NIC_driver`, `NIC_driver_assistant`, `truck_registration_no`) VALUES ('8', '2023-01-07', '09:20:22', '199745689362', '198003473170', 'VD4537');
+INSERT INTO `delivery_schedule` (`delivery_id`, `date`, `start_time`, `NIC_driver`, `NIC_driver_assistant`, `truck_registration_no`) VALUES ('9', '2023-01-09', '11:45:38', '199745289562', '198003473170', 'CS2023');
+
+INSERT INTO `order_` (`order_id`, `order_date`, `order_customer_id`, `total_amount`, `expected_delivery_date`, `delivery_address`, `payment_method`, `payment_status`, `order_status`, `route_id`, `delivery_id`) VALUES
+(1, '2022-12-20', 10, '19999.00', '2023-01-01', 'No 12, Main Street, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 19, 1),
+(2, '2022-12-20', 10, '14990.00', '2023-01-02', 'No 12, Main Street, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 19, 2),
+(3, '2022-12-21', 10, '21998.00', '2023-01-01', 'No 12, Main Street, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 19, 1),
+(4, '2022-12-21', 12, '11998.00', '2023-01-01', 'No 15, School Road, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 20, 1),
+(5, '2022-12-21', 12, '5999.00', '2023-01-02', 'No 15, School Road, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 20, 2),
+(6, '2022-12-21', 13, '22999.00', '2023-01-02', 'No 20, School Road, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 20, 2),
+(7, '2022-12-21', 13, '24990.00', '2023-01-02', 'No 20, School Road, Kandy.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 20, 2),
+(8, '2022-12-21', 7, '14990.00', '2023-01-03', 'No, 71 Bakery road, Trincomalee', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(9, '2022-12-21', 7, '20990.00', '2023-01-04', 'No, 71 Bakery road, Trincomalee', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(10, '2022-12-22', 7, '5290.00', '2023-01-03', 'No, 71 Bakery road, Trincomalee', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(11, '2022-12-22', 14, '14990.00', '2023-01-04', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(12, '2022-12-22', 14, '9490.00', '2023-01-03', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(13, '2022-12-22', 14, '9490.00', '2023-01-04', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(14, '2022-12-23', 14, '20990.00', '2023-01-03', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(15, '2022-12-23', 14, '5290.00', '2023-01-03', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(16, '2022-12-23', 14, '20000.00', '2023-01-04', 'No 15, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(17, '2022-12-23', 15, '10580.00', '2023-01-03', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(18, '2022-12-23', 15, '20000.00', '2023-01-04', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(19, '2022-12-23', 15, '22990.00', '2023-01-03', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(20, '2022-12-23', 15, '24990.00', '2023-01-03', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(21, '2022-12-23', 15, '24990.00', '2023-01-04', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(22, '2022-12-23', 15, '65999.00', '2023-01-03', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 17, 3),
+(23, '2022-12-23', 15, '20000.00', '2023-01-04', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 16, 4),
+(24, '2022-12-24', 15, '65999.00', '2023-01-15', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PENDING', 'IN_STORE', 16, NULL),
+(25, '2022-12-25', 5, '15356.00', '2023-01-05', 'No, 267, Ratmalana road, Colombo', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 13, 5),
+(26, '2022-12-25', 8, '5999.00', '2023-01-06', 'No,40 Katunaayake raod, Negombo', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 10, 6),
+(27, '2022-12-25', 8, '20990.00', '2023-01-07', 'No,40 Katunaayake raod, Negombo', 'CASH_ON_DELIVERY', 'PAID', 'DELIVERED', 10, 7),
+(28, '2022-12-26', 4, '24990.00', '2023-01-08', 'No,102 Galle road, Galle', 'CASH_ON_DELIVERY', 'PENDING', 'CONFIRMED', 7, 8),
+(29, '2022-12-27', 4, '15999.00', '2023-01-09', 'No,102 Galle road, Galle', 'CASH_ON_DELIVERY', 'PENDING', 'CONFIRMED', 7, 9),
+(30, '2023-01-10', 3, '5999.00', '2023-01-18', 'Sunnagam,Jaffna', 'CASH_ON_DELIVERY', 'PENDING', 'CONFIRMED', 1, NULL),
+(31, '2023-01-10', 15, '14990.00', '2023-01-17', 'No 25, Main Road, Trincomalee.', 'CASH_ON_DELIVERY', 'PENDING', 'CONFIRMED', 16, NULL);
+
+
+
+INSERT INTO `transports` (`order_id`, `trip_id`, `date`) VALUES
+(8, 11, '2022-12-27'),
+(9, 11, '2022-12-27'),
+(10, 11, '2022-12-27'),
+(11, 11, '2022-12-27'),
+(12, 11, '2022-12-27'),
+(13, 11, '2022-12-27'),
+(14, 11, '2022-12-27'),
+(15, 11, '2022-12-27'),
+(16, 11, '2022-12-27'),
+(17, 11, '2022-12-27'),
+(18, 11, '2022-12-27'),
+(19, 11, '2022-12-27'),
+(20, 11, '2022-12-27'),
+(21, 11, '2022-12-27'),
+(22, 11, '2022-12-27'),
+(23, 11, '2022-12-27'),
+(24, 12, '2022-12-31'),
+(25, 1, '2022-12-26'),
+(26, 3, '2022-12-29'),
+(27, 4, '2023-01-01'),
+(28, 5, '2023-01-02'),
+(29, 5, '2023-01-02');
+
+INSERT INTO `order_includes` (`order_id`, `product_id`, `quantity`) VALUES
+(1, 5, 1),
+(2, 2, 1),
+(3, 3, 1),
+(3, 6, 1),
+(4, 3, 2),
+(5, 3, 1),
+(6, 27, 1),
+(7, 14, 1),
+(8, 2, 1),
+(9, 15, 1),
+(10, 11, 1),
+(11, 2, 1),
+(12, 7, 1),
+(13, 7, 1),
+(14, 15, 1),
+(15, 11, 1),
+(16, 19, 1),
+(17, 11, 2),
+(18, 19, 1),
+(19, 38, 1),
+(20, 42, 1),
+(21, 42, 1),
+(22, 46, 1),
+(23, 50, 1),
+(24, 46, 1),
+(25, 10, 1),
+(26, 3, 1),
+(27, 15, 1),
+(28, 14, 1),
+(29, 6, 1),
+(30, 3, 1),
+(31, 2, 1);
+
+
