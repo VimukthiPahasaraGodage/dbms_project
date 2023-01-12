@@ -1,0 +1,24 @@
+DELIMITER $$    
+CREATE FUNCTION driver_assistant_work_hour(NIC VARCHAR(12))
+RETURNS INTEGER
+BEGIN
+DECLARE total_hour INTEGER;
+SELECT SUM(ROUND(TIMESTAMPDIFF(MINUTE, shift_start_time, shift_end_time)/60)) INTO total_hour
+    FROM driver_assistant_roster
+    where NIC_driver_assistant= NIC and WEEK(date)=WEEK(CURRENT_DATE);
+RETURN total_hour;
+END$$
+DELIMITER ;
+
+
+DELIMITER $$    
+CREATE FUNCTION driver_work_hour(NIC VARCHAR(12))
+RETURNS INTEGER
+BEGIN
+DECLARE total_hour INTEGER;
+SELECT SUM(ROUND(TIMESTAMPDIFF(MINUTE, shift_start_time, shift_end_time)/60)) INTO total_hour
+    FROM driver_roster
+    where NIC_driver= NIC and WEEK(date)=WEEK(CURRENT_DATE);
+RETURN total_hour;
+END$$
+DELIMITER ;
