@@ -22,3 +22,55 @@ SELECT SUM(ROUND(TIMESTAMPDIFF(MINUTE, shift_start_time, shift_end_time)/60)) IN
 RETURN total_hour;
 END$$
 DELIMITER ;
+
+
+DELIMITER $$    
+CREATE FUNCTION store_id_by_driver(nic VARCHAR(12))
+RETURNS INTEGER
+BEGIN
+DECLARE id INTEGER;
+SELECT store_id INTO id
+    FROM driver
+    WHERE driver.NIC= nic LIMIT 1;
+RETURN id;
+END$$
+DELIMITER ;
+
+
+DELIMITER $$    
+CREATE FUNCTION store_id_by_driver_assistant(nic VARCHAR(12))
+RETURNS INTEGER
+BEGIN
+DECLARE id INTEGER;
+SELECT store_id INTO id
+    FROM driver_assistant
+    WHERE driver_assistant.NIC= nic LIMIT 1;
+RETURN id;
+END$$
+DELIMITER ;
+
+
+DELIMITER $$    
+CREATE FUNCTION store_id_by_truck(reg_no VARCHAR(8))
+RETURNS INTEGER
+BEGIN
+DECLARE id INTEGER;
+SELECT store_id INTO id
+    FROM truck
+    WHERE truck.registration_no=reg_no  LIMIT 1;
+RETURN id;
+END$$
+DELIMITER ;
+
+
+DELIMITER $$    
+CREATE FUNCTION store_id_by_delivery_id(delivery_id int)
+RETURNS INTEGER
+BEGIN
+DECLARE id INTEGER;
+SELECT store_id INTO id
+    FROM route
+    WHERE route.route_id IN (SELECT route_id FROM order_ where order_.delivery_id=delivery_id) LIMIT 1;
+RETURN id;
+END$$
+DELIMITER ;
