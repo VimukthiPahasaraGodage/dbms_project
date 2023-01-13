@@ -87,3 +87,17 @@ SELECT store_id INTO id
 RETURN id;
 END$$
 DELIMITER ;
+
+
+DELIMITER $$
+CREATE FUNCTION give_route(delivery_id INT) RETURNS int(11)
+BEGIN
+DECLARE id INTEGER; 
+IF(EXISTS(SELECT route_id FROM order_ WHERE order_.delivery_id=delivery_id LIMIT 1)) THEN
+SELECT route_id INTO id  FROM order_ WHERE order_.delivery_id=delivery_id LIMIT 1;
+	RETURN id;    
+ELSE 
+	RETURN 0; 
+END IF;
+END$$
+DELIMITER ;
