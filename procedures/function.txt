@@ -64,13 +64,26 @@ DELIMITER ;
 
 
 DELIMITER $$    
-CREATE FUNCTION store_id_by_delivery_id(delivery_id int)
+CREATE FUNCTION store_id_by_route(route_id INT)
 RETURNS INTEGER
 BEGIN
 DECLARE id INTEGER;
 SELECT store_id INTO id
     FROM route
-    WHERE route.route_id IN (SELECT route_id FROM order_ where order_.delivery_id=delivery_id) LIMIT 1;
+    WHERE route.route_id=route_id  LIMIT 1;
+RETURN id;
+END$$
+DELIMITER ;
+
+
+DELIMITER $$    
+CREATE FUNCTION store_id_by_deliveryID(delivery_id INT)
+RETURNS INTEGER
+BEGIN
+DECLARE id INTEGER;
+SELECT store_id INTO id
+    FROM driver
+    WHERE NIC IN (SELECT NIC_driver FROM delivery_schedule where delivery_schedule.delivery_id=delivery_id) LIMIT 1;
 RETURN id;
 END$$
 DELIMITER ;
