@@ -25,7 +25,7 @@ DELIMITER ;
 
 
 DELIMITER $$
-CREATE TRIGGER check_deliivery_schedule
+CREATE TRIGGER check_delivery_schedule
 BEFORE INSERT ON delivery_schedule
 FOR EACH ROW
 BEGIN
@@ -45,6 +45,9 @@ FOR EACH ROW
 BEGIN
     IF store_id_by_route(OLD.route_id) != store_id_by_deliveryID(NEW.delivery_id) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cannot update delivery_id as delivery route is different';
+    END IF;
+    IF OLD.order_date > (SELECT date FROM delivery_schedule WHERE delivery_id=NEW.delivery_id) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cannot update delivery_id as delivery date is not matching';
     END IF;
 END$$
 DELIMITER ;
