@@ -7,22 +7,30 @@ include($_SERVER['DOCUMENT_ROOT'] . "/dbms_project/connection/functions.php");
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted
-        $email = $_POST['email'];
-		$password = $_POST['password'];
-        $customer_name = $_POST['customer_name'];
-        $address = $_POST['address'];
-        $phone_number = $_POST['phone_number'];
+
+        $email =mysqli_real_escape_string($con ,$_POST['email']);
+		$password =mysqli_real_escape_string($con , $_POST['password']);
+        $customer_name = mysqli_real_escape_string($con ,$_POST['customer_name']);
+        $address =mysqli_real_escape_string($con , $_POST['address']);
+        $phone_number = mysqli_real_escape_string($con ,$_POST['phone_number']);
 
 
 		if(!empty($customer_name) && !empty($password))
 		{
 
 			//save to database
-			$query = "insert into customer (email,password,customer_name,address,phone_number) values ('$email','$password','$customer_name','$address','$phone_number')";
-
-            if (isset($con)) {
-                mysqli_query($con, $query);
+            //also checked SQL Injection
+			$query = "insert into customer (email,password,customer_name,address,phone_number) values (?,?,?,?,?)";
+            $stml=mysqli_stmt_init($con);
+            if(!mysqli_stmt_prepare($stml,$query)){
+                echo ('error found');
             }
+            else{
+                mysqli_stmt_bind_param($stml,"ssssi",$email,$password,$customer_name,$address,$phone_number);
+                mysqli_stmt_execute($stml);
+                $stml->close();
+            }
+
 			header("Location: ./login.php");
 			die;
 		}else
@@ -31,6 +39,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/dbms_project/connection/functions.php");
 		}
 	}
 ?>
+
 
 
 <!DOCTYPE html>
