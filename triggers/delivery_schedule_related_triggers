@@ -3,12 +3,20 @@ CREATE TRIGGER check_driver
 BEFORE INSERT ON driver_roster
 FOR EACH ROW
 BEGIN
+	DECLARE prev_driver_NIC VARCHAR(12);
     IF driver_work_hour(NEW.NIC_driver)+ROUND(TIMESTAMPDIFF(MINUTE, NEW.shift_start_time, NEW.shift_end_time)/60) > 40 THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Cannot insert, working hours exceed the limit';
     END IF;
+    SELECT NIC_driver INTO prev_driver_NIC
+    FROM driver_roster
+    WHERE driver_roster.entry_no= (SELECT MAX(entry_no) FROM driver_roster);
+    IF (NEW.NIC_driver = prev_driver_NIC) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Driver cannot be assigned to two consecutive schedules';
+    END IF;
 END$$
 DELIMITER ;
+
 
 
 DELIMITER $$
@@ -16,9 +24,20 @@ CREATE TRIGGER check_driver_assistant
 BEFORE INSERT ON driver_assistant_roster
 FOR EACH ROW
 BEGIN
+	DECLARE prev_schedule_id INT;
+	DECLARE prev_assistant_NIC INT;
+	DECLARE consecutive_turns INT;
     IF driver_assistant_work_hour(NEW.NIC_driver_assistant)+ROUND(TIMESTAMPDIFF(MINUTE, NEW.shift_start_time, NEW.shift_end_time)/60) > 60 THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Cannot insert, working hours exceed the limit';
+    END IF;
+    SELECT entry_no, NIC_driver_assistant 
+    INTO prev_schedule_id, prev_assistant_NIC
+    FROM driver_assistant_roster
+    WHERE driver_assistant_roster.entry_no= (SELECT MAX(entry_no) FROM driver_assistant_roster);
+    SET consecutive_turns = (SELECT COUNT(*) FROM driver_assistant_roster WHERE driver_assistant_roster.NIC_driver_assistant= NEW.NIC_driver_assistant AND entry_no >= prev_schedule_id-1);
+    IF (consecutive_turns >= 2) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Driver Assistant cannot be assigned to more than two consecutive schedules';
     END IF;
 END$$
 DELIMITER ;
