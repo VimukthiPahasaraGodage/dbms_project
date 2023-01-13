@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="Xampp Apache" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="Xampp Apache">
+        <serverdata>
+          <mappings>
+            <mapping deploy="dbms_project" local="$PROJECT_DIR$" web="/dbms_project" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

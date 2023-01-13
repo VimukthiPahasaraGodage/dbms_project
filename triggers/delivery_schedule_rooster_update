@@ -1,0 +1,17 @@
+# This trigger update the delivery schedule,driver_roster,driver_assistant_roster
+
+DELIMITER $$
+CREATE TRIGGER delivery_schedule_rooster_update
+BEFORE INSERT ON delivery_schedule
+FOR EACH ROW
+BEGIN
+declare dashift_end_time,dshift_end_time,dur int;
+DECLARE d time;
+set dur = (select distinct duration from route where store_id =(select store_id from driver where NIC = new.NIC_driver));
+set d = SEC_TO_TIME(dur*60);
+set dshift_end_time = addtime(new.start_time,d);
+set dashift_end_time = addtime(new.start_time,d);
+INSERT INTO driver_roster ( `date`, `shift_start_time`, `shift_end_time`, `NIC_driver`) VALUES ( new.date,new.start_time, dshift_end_time, new.NIC_driver);
+INSERT INTO driver_assistant_roster ( `date`, `shift_start_time`, `shift_end_time`, `NIC_driver_assistant`) VALUES (new.date,new.start_time, dashift_end_time, new.NIC_driver_assistant);
+END$$
+DELIMITER ;

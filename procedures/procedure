@@ -1,0 +1,6 @@
+DELIMITER $$
+CREATE PROCEDURE `insert_delivery_schedule`(IN date_ date,IN start_time time, IN s_id int )
+BEGIN
+    INSERT INTO `delivery_schedule` (`date`, `start_time`, `NIC_driver`, `NIC_driver_assistant`, `truck_registration_no`) select date_, start_time, NIC_driver, NIC_driver_assistant, registration_no from (select distinctrow  driver.NIC as NIC_driver,driver_assistant.NIC as NIC_driver_assistant, registration_no from (truck inner join driver_assistant using (store_id) ) inner join driver using(store_id) where store_id = s_id order by rand() limit 1) as sub;
+END$$
+DELIMITER ;
