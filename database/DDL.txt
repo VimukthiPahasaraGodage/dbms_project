@@ -203,12 +203,13 @@ CREATE VIEW customer_analytics AS
     WHERE o.payment_status = 'PAID';
 
 CREATE VIEW truck_analytics AS
-    SELECT t.duration, d.truck_registration_no, d.date
+    SELECT round(t.duration/60) as duration, d.truck_registration_no, d.date
     FROM delivery_schedule AS d
     LEFT JOIN (SELECT DISTINCT r.duration, o.delivery_id
                 FROM order_ AS o
                 LEFT JOIN route AS r ON o.route_id = r.route_id
                 WHERE o.order_status = 'DELIVERED') AS t ON t.delivery_id = d.delivery_id;
+
                 
 CREATE VIEW driver_analytics AS
     SELECT r.NIC_driver, d.name, r.date, ROUND(TIMESTAMPDIFF(MINUTE, r.shift_start_time, r.shift_end_time)/60) AS hours
