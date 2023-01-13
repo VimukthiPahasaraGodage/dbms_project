@@ -17,3 +17,13 @@ CREATE TRIGGER `status_instore` BEFORE UPDATE ON `order_`
 END //
 DELIMITER ;
 
+
+DELIMITER //
+CREATE TRIGGER `restict_route` BEFORE UPDATE ON `order_`
+ FOR EACH ROW BEGIN 
+IF (NEW.route_id != give_route(NEW.delivery_id) AND give_route(NEW.delivery_id)!=0) THEN
+	SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Please Assign With Same Route';
+END IF;
+END //
+DELIMITER ;
+
