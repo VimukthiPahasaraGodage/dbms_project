@@ -209,13 +209,13 @@ CREATE VIEW truck_analytics AS
                 FROM order_ AS o
                 LEFT JOIN route AS r ON o.route_id = r.route_id
                 WHERE o.order_status = 'DELIVERED') AS t ON t.delivery_id = d.delivery_id;
-
+                
 CREATE VIEW driver_analytics AS
-    SELECT r.NIC_driver, d.name, r.date, TIMESTAMPDIFF(HOUR, r.shift_start_time, r.shift_end_time) AS hours
+    SELECT r.NIC_driver, d.name, r.date, ROUND(TIMESTAMPDIFF(MINUTE, r.shift_start_time, r.shift_end_time)/60) AS hours
     FROM driver_roster AS r
     LEFT JOIN driver AS d ON r.NIC_driver = d.NIC;
 
 CREATE VIEW driver_assistant_analytics AS
-    SELECT r.NIC_driver_assistant, d.name, r.date, TIMESTAMPDIFF(HOUR, r.shift_start_time, r.shift_end_time) AS hours
+    SELECT r.NIC_driver_assistant, d.name, r.date, ROUND(TIMESTAMPDIFF(MINUTE, r.shift_start_time, r.shift_end_time)/60) AS hours
     FROM driver_assistant_roster AS r
     LEFT JOIN driver_assistant AS d ON r.NIC_driver_assistant = d.NIC;
