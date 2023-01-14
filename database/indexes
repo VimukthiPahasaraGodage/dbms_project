@@ -8,7 +8,7 @@ CREATE INDEX driver_assis_index
 ON driver_assistant (NIC);
 
 CREATE INDEX order_index
-ON `order` (order_id);
+ON `order_` (order_id);
 
 CREATE INDEX order_includes_index
 ON order_includes (order_id);
